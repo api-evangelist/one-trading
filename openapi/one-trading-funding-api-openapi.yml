@@ -1,0 +1,74 @@
+openapi: 3.0.3
+info:
+  title: One Trading Fast Funding API
+  version: '1.0'
+  description: 'REST API for the One Trading exchange ("Fast API"). Public market-data endpoints (currencies, instruments, order book, candlesticks, market ticker, fees, funding rates, server time) require no authentication. Account, trading and futures endpoints require a Bearer API token with the appropriate permission scope (Read / Trade / Withdraw / SUBACCOUNT_TRANSFER).
+
+    Provenance: this specification was reconstructed by API Evangelist from the provider''s public documentation index (https://docs.onetrading.com/llms.txt) and from live responses of the public endpoints. Request/response schemas for public endpoints reflect real observed payloads; authenticated operations are modeled from the documented operation catalog. It is not the provider''s official machine-readable contract.'
+  x-provenance:
+    generated: '2026-07-20'
+    method: generated
+    source:
+    - https://docs.onetrading.com/llms.txt
+    - https://api.onetrading.com/fast/v1/currencies
+    - https://api.onetrading.com/fast/v1/instruments
+    - https://api.onetrading.com/fast/v1/market-ticker
+    - https://api.onetrading.com/fast/v1/order-book/BTC_USDC
+    - https://api.onetrading.com/fast/v1/fees
+    - https://api.onetrading.com/fast/v1/funding-rate
+    - https://docs.onetrading.com/rest/trading/create-order.md
+servers:
+- url: https://api.onetrading.com/fast
+  description: Production
+security:
+- BearerToken: []
+tags:
+- name: Funding
+  description: Subaccount balance transfers
+paths:
+  /v1/subaccounts/transfers:
+    post:
+      tags:
+      - Funding
+      operationId: transferSubaccountBalance
+      summary: Transfer Subaccount Balance
+      description: Transfers an amount of a single currency between two accounts belonging to the authenticated account holder (main account or any subaccount). Requires SUBACCOUNT_TRANSFER scope.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubaccountTransferRequest'
+      responses:
+        '200':
+          description: Transfer accepted
+        '403':
+          description: Forbidden
+        '422':
+          description: Unprocessable Entity
+components:
+  schemas:
+    SubaccountTransferRequest:
+      type: object
+      required:
+      - currency
+      - amount
+      - from
+      - to
+      properties:
+        currency:
+          type: string
+        amount:
+          type: string
+        from:
+          type: string
+          description: Source account/subaccount id
+        to:
+          type: string
+          description: Destination account/subaccount id
+  securitySchemes:
+    BearerToken:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'API token generated in the One Trading UI, sent as ''Authorization: Bearer <token>''. Tokens carry one or more permission scopes: Read, Trade, Withdraw, SUBACCOUNT_TRANSFER.'

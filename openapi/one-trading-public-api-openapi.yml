@@ -1,0 +1,511 @@
+openapi: 3.0.3
+info:
+  title: One Trading Fast Funding Public API
+  version: '1.0'
+  description: 'REST API for the One Trading exchange ("Fast API"). Public market-data endpoints (currencies, instruments, order book, candlesticks, market ticker, fees, funding rates, server time) require no authentication. Account, trading and futures endpoints require a Bearer API token with the appropriate permission scope (Read / Trade / Withdraw / SUBACCOUNT_TRANSFER).
+
+    Provenance: this specification was reconstructed by API Evangelist from the provider''s public documentation index (https://docs.onetrading.com/llms.txt) and from live responses of the public endpoints. Request/response schemas for public endpoints reflect real observed payloads; authenticated operations are modeled from the documented operation catalog. It is not the provider''s official machine-readable contract.'
+  x-provenance:
+    generated: '2026-07-20'
+    method: generated
+    source:
+    - https://docs.onetrading.com/llms.txt
+    - https://api.onetrading.com/fast/v1/currencies
+    - https://api.onetrading.com/fast/v1/instruments
+    - https://api.onetrading.com/fast/v1/market-ticker
+    - https://api.onetrading.com/fast/v1/order-book/BTC_USDC
+    - https://api.onetrading.com/fast/v1/fees
+    - https://api.onetrading.com/fast/v1/funding-rate
+    - https://docs.onetrading.com/rest/trading/create-order.md
+servers:
+- url: https://api.onetrading.com/fast
+  description: Production
+security:
+- BearerToken: []
+tags:
+- name: Public
+  description: Public market-data endpoints (no authentication)
+paths:
+  /v1/currencies:
+    get:
+      tags:
+      - Public
+      operationId: getCurrencies
+      summary: Currencies
+      description: Get a list of all available currencies.
+      security: []
+      responses:
+        '200':
+          description: Array of currencies
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Currency'
+  /v1/instruments:
+    get:
+      tags:
+      - Public
+      operationId: getInstruments
+      summary: Instruments
+      description: Retrieves a list of available instrument pairs on the exchange, including base/quote assets, precision, min/max trading limits and market state.
+      security: []
+      parameters:
+      - name: type
+        in: query
+        required: false
+        description: Filter by market type.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Array of instruments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Instrument'
+  /v1/candlesticks/{instrument_code}:
+    get:
+      tags:
+      - Public
+      operationId: getCandlesticks
+      summary: Candlesticks
+      description: Get instrument candlesticks for a specified time period (up to 5000 candlesticks). Supports a countBack parameter that takes precedence over 'from' when provided.
+      security: []
+      parameters:
+      - name: instrument_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: unit
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - MINUTES
+          - HOURS
+          - DAYS
+          - WEEKS
+          - MONTHS
+      - name: period
+        in: query
+        required: false
+        schema:
+          type: integer
+      - name: from
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: to
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: countBack
+        in: query
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Candlestick series
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CandlestickResponse'
+        '400':
+          description: Invalid instrument code
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v1/order-book/{instrument_code}:
+    get:
+      tags:
+      - Public
+      operationId: getOrderBook
+      summary: Order Book
+      description: Get the specified instrument's order book.
+      security: []
+      parameters:
+      - name: instrument_code
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: depth
+        in: query
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Order book
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderBook'
+        '400':
+          description: Invalid instrument code
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v1/market-ticker:
+    get:
+      tags:
+      - Public
+      operationId: getMarketTicker
+      summary: Market Ticker
+      description: The market ticker provides information about the current state of a market and summary statistics over 24 hours, updated every minute.
+      security: []
+      responses:
+        '200':
+          description: Array of market tickers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MarketTicker'
+  /v1/market-ticker/{instrument_code}:
+    get:
+      tags:
+      - Public
+      operationId: getMarketTickerForInstrument
+      summary: Market Ticker For Instrument
+      description: Get market statistics on a single market.
+      security: []
+      parameters:
+      - name: instrument_code
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Market ticker
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MarketTicker'
+  /v1/fees:
+    get:
+      tags:
+      - Public
+      operationId: getFeeGroups
+      summary: Fee Groups
+      description: Returns details of all fee groups. Fee groups are separated into product types.
+      security: []
+      responses:
+        '200':
+          description: Array of fee groups
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FeeGroup'
+  /v1/time:
+    get:
+      tags:
+      - Public
+      operationId: getTime
+      summary: Time
+      description: Returns the current server time in UTC.
+      security: []
+      responses:
+        '200':
+          description: Server time
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServerTime'
+  /v1/funding-rate:
+    get:
+      tags:
+      - Public
+      operationId: getCurrentFundingRate
+      summary: Current Funding Rate
+      description: Retrieve the latest preliminary funding rate for one or all futures instruments. Recalculated every minute and settled every 4 hours.
+      security: []
+      parameters:
+      - name: instrument_code
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Current funding rates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FundingRate'
+  /v1/funding-rate/history:
+    get:
+      tags:
+      - Public
+      operationId: getFundingRateHistory
+      summary: Funding Rate History
+      description: Retrieve the historical settled funding rates for a specific instrument, updated every 4 hours.
+      security: []
+      parameters:
+      - name: instrument_code
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Funding rate history
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FundingRateHistory'
+  /v1/funding-rate/settings:
+    get:
+      tags:
+      - Public
+      operationId: getFundingRateSettings
+      summary: Funding Rate Settings
+      description: Returns an array of funding rate settings per instrument.
+      security: []
+      responses:
+        '200':
+          description: Funding rate settings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FundingRateSetting'
+components:
+  schemas:
+    FeeGroup:
+      type: object
+      properties:
+        fee_group_id:
+          type: string
+          example: SPOT
+        display_text:
+          type: string
+        volume_currency:
+          type: string
+          example: EUR
+        fee_tiers:
+          type: array
+          items:
+            type: object
+            properties:
+              volume:
+                type: number
+              fee_group_id:
+                type: string
+              maker_fee:
+                type: string
+              taker_fee:
+                type: string
+    ServerTime:
+      type: object
+      properties:
+        iso:
+          type: string
+          format: date-time
+        epoch_millis:
+          type: integer
+    Currency:
+      type: object
+      properties:
+        code:
+          type: string
+          example: BTC
+        precision:
+          type: integer
+          example: 8
+        unified_cryptoasset_id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Bitcoin
+        collateral_percentage:
+          type: integer
+          minimum: 0
+          maximum: 100
+          description: Percentage of the asset's value usable as collateral for futures positions.
+      required:
+      - code
+      - precision
+      - name
+    Error:
+      type: object
+      description: One Trading error envelope. Errors carry a single machine-readable code string.
+      properties:
+        error:
+          type: string
+          example: INVALID_INSTRUMENT_CODE
+    CandlestickResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: data
+        candlesticks:
+          type: array
+          items:
+            type: object
+            properties:
+              last_sequence:
+                type: integer
+              instrument_code:
+                type: string
+              granularity:
+                type: object
+                properties:
+                  unit:
+                    type: string
+                  period:
+                    type: integer
+              open:
+                type: string
+              high:
+                type: string
+              low:
+                type: string
+              close:
+                type: string
+              volume:
+                type: string
+              time:
+                type: string
+                format: date-time
+    OrderBook:
+      type: object
+      properties:
+        instrument_code:
+          type: string
+          example: BTC_USDC
+        time:
+          type: integer
+          description: Timestamp in nanoseconds
+        asks:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderBookLevel'
+        bids:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderBookLevel'
+    MarketTicker:
+      type: object
+      properties:
+        instrument_code:
+          type: string
+        last_price:
+          type: string
+        high:
+          type: string
+        low:
+          type: string
+        highest_bid:
+          type: string
+        lowest_ask:
+          type: string
+        base_volume:
+          type: string
+        price_change:
+          type: string
+    FundingRateHistory:
+      type: object
+      properties:
+        funding_rates:
+          type: array
+          items:
+            $ref: '#/components/schemas/FundingRate'
+    AssetRef:
+      type: object
+      properties:
+        code:
+          type: string
+          example: BTC
+        precision:
+          type: integer
+          example: 8
+    OrderBookLevel:
+      type: object
+      properties:
+        price:
+          type: string
+          example: '65483.23'
+        amount:
+          type: string
+          example: '0.32988'
+    FundingRateSetting:
+      type: object
+      properties:
+        instrument_code:
+          type: string
+        state:
+          type: string
+          example: ACTIVE
+        market_offset:
+          type: number
+        clamp_threshold:
+          type: number
+        annual_interest_rate:
+          type: number
+    Instrument:
+      type: object
+      properties:
+        base:
+          $ref: '#/components/schemas/AssetRef'
+        quote:
+          $ref: '#/components/schemas/AssetRef'
+        amount_precision:
+          type: integer
+          example: 5
+        market_precision:
+          type: integer
+          example: 2
+        min_size:
+          type: string
+          example: '10.0'
+        min_price:
+          type: string
+          example: '1000'
+        max_price:
+          type: string
+        state:
+          type: string
+          example: ACTIVE
+    FundingRate:
+      type: object
+      properties:
+        instrument_code:
+          type: string
+        funding_rate:
+          type: string
+        mark_price:
+          type: string
+        time:
+          type: integer
+        timestamp:
+          type: string
+          format: date-time
+  securitySchemes:
+    BearerToken:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'API token generated in the One Trading UI, sent as ''Authorization: Bearer <token>''. Tokens carry one or more permission scopes: Read, Trade, Withdraw, SUBACCOUNT_TRANSFER.'

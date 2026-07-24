@@ -1,0 +1,223 @@
+openapi: 3.0.3
+info:
+  title: One Trading Fast Funding Futures API
+  version: '1.0'
+  description: 'REST API for the One Trading exchange ("Fast API"). Public market-data endpoints (currencies, instruments, order book, candlesticks, market ticker, fees, funding rates, server time) require no authentication. Account, trading and futures endpoints require a Bearer API token with the appropriate permission scope (Read / Trade / Withdraw / SUBACCOUNT_TRANSFER).
+
+    Provenance: this specification was reconstructed by API Evangelist from the provider''s public documentation index (https://docs.onetrading.com/llms.txt) and from live responses of the public endpoints. Request/response schemas for public endpoints reflect real observed payloads; authenticated operations are modeled from the documented operation catalog. It is not the provider''s official machine-readable contract.'
+  x-provenance:
+    generated: '2026-07-20'
+    method: generated
+    source:
+    - https://docs.onetrading.com/llms.txt
+    - https://api.onetrading.com/fast/v1/currencies
+    - https://api.onetrading.com/fast/v1/instruments
+    - https://api.onetrading.com/fast/v1/market-ticker
+    - https://api.onetrading.com/fast/v1/order-book/BTC_USDC
+    - https://api.onetrading.com/fast/v1/fees
+    - https://api.onetrading.com/fast/v1/funding-rate
+    - https://docs.onetrading.com/rest/trading/create-order.md
+servers:
+- url: https://api.onetrading.com/fast
+  description: Production
+security:
+- BearerToken: []
+tags:
+- name: Futures
+  description: Futures positions, funding and portfolio endpoints
+paths:
+  /v1/funding-rate:
+    get:
+      tags:
+      - Futures
+      operationId: getCurrentFundingRate
+      summary: Current Funding Rate
+      description: Retrieve the latest preliminary funding rate for one or all futures instruments. Recalculated every minute and settled every 4 hours.
+      security: []
+      parameters:
+      - name: instrument_code
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Current funding rates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FundingRate'
+  /v1/funding-rate/history:
+    get:
+      tags:
+      - Futures
+      operationId: getFundingRateHistory
+      summary: Funding Rate History
+      description: Retrieve the historical settled funding rates for a specific instrument, updated every 4 hours.
+      security: []
+      parameters:
+      - name: instrument_code
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Funding rate history
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FundingRateHistory'
+  /v1/funding-rate/settings:
+    get:
+      tags:
+      - Futures
+      operationId: getFundingRateSettings
+      summary: Funding Rate Settings
+      description: Returns an array of funding rate settings per instrument.
+      security: []
+      responses:
+        '200':
+          description: Funding rate settings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FundingRateSetting'
+  /v1/account/futures/summary:
+    get:
+      tags:
+      - Futures
+      operationId: getFuturesSummary
+      summary: Futures Portfolio Summary
+      description: Real-time summary of a user's futures portfolio (equity, margin, positions), updated every minute.
+      responses:
+        '200':
+          description: Futures summary
+  /v1/account/futures/positions:
+    get:
+      tags:
+      - Futures
+      operationId: getFuturesOpenPositions
+      summary: Get Futures Open Positions
+      description: All open futures positions for the authenticated user (size, direction, entry price, realised PnL, timestamps).
+      responses:
+        '200':
+          description: Open positions
+  /v1/account/futures/positions-history:
+    get:
+      tags:
+      - Futures
+      operationId: getFuturesPositionsHistory
+      summary: Positions History
+      description: Retrieves closed futures positions opened within a requested date range.
+      parameters:
+      - name: from
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: to
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: Closed positions
+  /v1/account/futures/positions/{position_id}/trades:
+    get:
+      tags:
+      - Futures
+      operationId: getFuturesPositionTrades
+      summary: Position Trades
+      description: Returns an array of trade records for the specified position.
+      parameters:
+      - name: position_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Position trades
+  /v1/account/futures/positions/{position_id}/funding-payments:
+    get:
+      tags:
+      - Futures
+      operationId: getFuturesPositionFundingPayments
+      summary: Position Funding Payments
+      description: Returns funding payment records for the specified position, sorted by timestamp descending.
+      parameters:
+      - name: position_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Position funding payments
+  /v1/account/futures/funding-payments:
+    get:
+      tags:
+      - Futures
+      operationId: getFuturesFundingPayments
+      summary: Funding Payments
+      description: Returns a paginated list of funding payments, grouped by instrument code and sorted descending by timestamp.
+      parameters:
+      - name: instrument_code
+        in: query
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Funding payments
+components:
+  schemas:
+    FundingRateHistory:
+      type: object
+      properties:
+        funding_rates:
+          type: array
+          items:
+            $ref: '#/components/schemas/FundingRate'
+    FundingRateSetting:
+      type: object
+      properties:
+        instrument_code:
+          type: string
+        state:
+          type: string
+          example: ACTIVE
+        market_offset:
+          type: number
+        clamp_threshold:
+          type: number
+        annual_interest_rate:
+          type: number
+    FundingRate:
+      type: object
+      properties:
+        instrument_code:
+          type: string
+        funding_rate:
+          type: string
+        mark_price:
+          type: string
+        time:
+          type: integer
+        timestamp:
+          type: string
+          format: date-time
+  securitySchemes:
+    BearerToken:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: 'API token generated in the One Trading UI, sent as ''Authorization: Bearer <token>''. Tokens carry one or more permission scopes: Read, Trade, Withdraw, SUBACCOUNT_TRANSFER.'
