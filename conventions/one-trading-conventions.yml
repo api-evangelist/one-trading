@@ -1,0 +1,63 @@
+generated: '2026-07-20'
+method: searched
+source:
+  - https://docs.onetrading.com/llms.txt
+  - https://docs.onetrading.com/rest/trading/create-order.md
+  - https://docs.onetrading.com/websocket/authenticate.md
+  - live probes of https://api.onetrading.com/fast/v1
+authentication:
+  style: bearer-api-token
+  header: 'Authorization: Bearer <token>'
+  token_source: Generated in the One Trading UI; carries one or more permission scopes.
+  scopes: [Read, Trade, Withdraw, SUBACCOUNT_TRANSFER]
+  websocket: AUTHENTICATE message with api_token before private channels.
+  ref: authentication/one-trading-authentication.yml
+idempotency:
+  supported: true
+  mechanism: client_id
+  description: >-
+    On POST /v1/account/orders a caller-supplied client_id (UUID) uniquely
+    identifies the order, lets the caller look it up or cancel it by client_id,
+    and de-duplicates order submissions. The same client_id is echoed on order
+    events over the WebSocket. This is the exchange-native idempotency key for
+    order placement.
+  field: client_id
+  scope: create-order
+pagination:
+  style: cursor
+  params: [max_page_size, cursor]
+  notes: >-
+    List endpoints (orders, trades, funding payments, positions) are paginated
+    and filterable by from/to date range; results are sorted by timestamp
+    descending. Cursor-based continuation is used for large result sets.
+  applies_to:
+    - GET /v1/account/orders
+    - GET /v1/account/trades
+    - GET /v1/account/futures/funding-payments
+    - GET /v1/account/futures/positions-history
+versioning:
+  scheme: uri-path
+  current: v1
+  base_url: https://api.onetrading.com/fast
+  notes: >-
+    Active API is the "Fast API" under /fast/v1. A legacy Bitpanda-Pro-style
+    surface at /public/v1 remains reachable but is decommissioned (returns empty
+    arrays). See lifecycle/one-trading-lifecycle.yml.
+error_envelope:
+  shape: '{"error": "<CODE>"}'
+  discriminator_field: error
+  rfc9457: false
+  ref: errors/one-trading-problem-types.yml
+rate_limiting:
+  documented: false
+  notes: No published numeric rate limits were found in the public documentation.
+number_format:
+  monetary: string
+  notes: Prices, amounts and volumes are transmitted as decimal strings to preserve precision.
+time_format:
+  rest: ISO 8601 UTC (e.g. 2026-07-21T00:55:10.827Z) and epoch_millis
+  order_book_time: nanoseconds since epoch
+websocket:
+  url: wss://streams.fast.onetrading.com
+  keepalive: PING / PONG control messages
+  ref: asyncapi/one-trading-streams-asyncapi.yml

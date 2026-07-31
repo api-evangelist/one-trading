@@ -1,0 +1,25 @@
+generated: '2026-07-20'
+method: searched
+source: probed /.well-known/* on api + website + streams hosts
+notes: >-
+  No /.well-known/ discovery documents are published on any One Trading host.
+  Absence is a valid, recorded result. Authentication is Bearer API token
+  (not OAuth2/OIDC), so no oauth-authorization-server / openid-configuration
+  metadata is expected.
+hosts:
+  - host: https://api.onetrading.com
+    documents:
+      - { path: /.well-known/security.txt, status: 404 }
+      - { path: /.well-known/openid-configuration, status: 404 }
+      - { path: /.well-known/oauth-authorization-server, status: 404 }
+      - { path: /.well-known/api-catalog, status: 404 }
+      - { path: /.well-known/ai-plugin.json, status: 404 }
+  - host: https://onetrading.com
+    documents:
+      - { path: /.well-known/security.txt, status: 404 }
+      - { path: /.well-known/openid-configuration, status: 404 }
+      - { path: /.well-known/ai-plugin.json, status: 404 }
+  - host: https://streams.fast.onetrading.com
+    documents:
+      - { path: /.well-known/security.txt, status: 404 }
+      - { path: /.well-known/openid-configuration, status: 404 }

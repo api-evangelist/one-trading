@@ -1,0 +1,22 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for One Trading Fast API
+  version: 1.0.0
+extends: openapi/one-trading-fast-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-enriched: '2026-07-20'
+      x-api-evangelist-notes: >-
+        Reconstructed from the provider documentation index and live public
+        responses; not the provider's official machine-readable contract.
+      x-idempotency:
+        supported: true
+        key: client_id
+        scope: createOrder
+      x-async-companion: asyncapi/one-trading-streams-asyncapi.yml
+  - target: $.info
+    update:
+      x-agent-ready:
+        skills: skills/_index.yml
+        mcp: mcp/one-trading-mcp.yml

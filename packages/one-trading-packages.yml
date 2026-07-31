@@ -1,0 +1,28 @@
+generated: '2026-07-20'
+method: searched
+source:
+  - https://registry.npmjs.org (searched)
+  - https://pypi.org (searched)
+  - https://github.com/one-trading (0 public repos)
+  - https://github.com/ccxt/ccxt
+notes: >-
+  One Trading publishes no first-party client SDK. Its GitHub org
+  (github.com/one-trading, "One Trading Exchange B.V.") has 0 public
+  repositories, and no @onetrading npm scope or onetrading PyPI package exists.
+  The API is reachable through the third-party CCXT unified exchange library,
+  which ships a `onetrading` adapter (not maintained by One Trading).
+packages:
+  - language: javascript
+    registry: npm
+    name: ccxt
+    url: https://www.npmjs.com/package/ccxt
+    install: npm install ccxt
+    official: false
+    note: Third-party unified crypto-exchange library with a `onetrading` adapter.
+  - language: python
+    registry: pypi
+    name: ccxt
+    url: https://pypi.org/project/ccxt/
+    install: pip install ccxt
+    official: false
+    note: Third-party unified crypto-exchange library with a `onetrading` adapter.

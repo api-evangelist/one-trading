@@ -1,0 +1,45 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/one-trading-fast-openapi.yml
+entities:
+  - name: Currency
+    key: code
+    description: A tradable asset (crypto or fiat) with precision and collateral eligibility.
+  - name: Instrument
+    key: instrument_code
+    description: A tradable market pair (base/quote) with precision and trading limits.
+    fields: [base, quote]
+  - name: Order
+    key: order_id
+    alt_keys: [client_id]
+    description: A LIMIT order placed against an instrument.
+  - name: Trade
+    key: trade_id
+    description: An executed fill; belongs to an order.
+  - name: Position
+    key: position_id
+    description: A futures position; produces trades and funding payments.
+  - name: FundingPayment
+    description: A periodic funding cashflow on a futures position.
+  - name: FundingRate
+    key: instrument_code
+    description: The funding rate for a perpetual/futures instrument.
+  - name: FeeGroup
+    key: fee_group_id
+    description: A fee schedule (tiers) for a product type (e.g. SPOT).
+  - name: Account
+    key: account_id
+    description: The account holder; may own subaccounts.
+relationships:
+  - { from: Instrument, to: Currency, type: belongs_to, via: base }
+  - { from: Instrument, to: Currency, type: belongs_to, via: quote }
+  - { from: Order, to: Instrument, type: belongs_to, via: instrument_code }
+  - { from: Order, to: Account, type: belongs_to, via: account_id }
+  - { from: Order, to: Trade, type: has_many, via: order_id }
+  - { from: Trade, to: Instrument, type: belongs_to, via: instrument_code }
+  - { from: Position, to: Instrument, type: belongs_to, via: instrument_code }
+  - { from: Position, to: Trade, type: has_many, via: position_id }
+  - { from: Position, to: FundingPayment, type: has_many, via: position_id }
+  - { from: FundingRate, to: Instrument, type: belongs_to, via: instrument_code }
+  - { from: FundingPayment, to: Instrument, type: belongs_to, via: instrument_code }
+  - { from: Instrument, to: FeeGroup, type: belongs_to, via: fee_group_id }

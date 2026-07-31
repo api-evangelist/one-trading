@@ -1,0 +1,16 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/one-trading-fast-openapi.yml
+skills:
+  - file: one-trading-place-limit-order.md
+    name: Place and manage a limit order
+    api: openapi/one-trading-fast-openapi.yml
+    operations: [getInstruments, createOrder, getOrderByClientId, cancelOrderByClientId, getTradesForOrder]
+  - file: one-trading-stream-market-data.md
+    name: Stream real-time market data
+    api: asyncapi/one-trading-streams-asyncapi.yml
+    operations: [getInstruments, getOrderBook, getMarketTicker]
+  - file: one-trading-manage-futures.md
+    name: Monitor and manage a futures portfolio
+    api: openapi/one-trading-fast-openapi.yml
+    operations: [getFuturesSummary, getFuturesOpenPositions, getCurrentFundingRate, getFuturesFundingPayments]

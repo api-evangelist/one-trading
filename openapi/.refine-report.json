@@ -1,0 +1,20 @@
+{
+  "provider": "one-trading",
+  "sources": [
+    "one-trading-funding-api-openapi.yml",
+    "one-trading-futures-api-openapi.yml",
+    "one-trading-public-api-openapi.yml",
+    "one-trading-trading-api-openapi.yml"
+  ],
+  "outputs": [
+    "one-trading-funding-api-openapi.yml",
+    "one-trading-futures-api-openapi.yml",
+    "one-trading-public-api-openapi.yml",
+    "one-trading-trading-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,36 @@
+generated: '2026-07-20'
+method: searched
+source:
+  - https://docs.onetrading.com/rest/trading/create-order.md
+  - https://docs.onetrading.com/websocket/authenticate.md
+  - https://support.onetrading.com/hc/en-gb/articles/16357722538129
+  - live probes of https://api.onetrading.com/fast/v1
+docs: https://docs.onetrading.com
+summary:
+  types: [http]
+  http_schemes: [bearer]
+  api_key_in: [header]
+  oauth2_flows: []
+schemes:
+  - name: BearerToken
+    type: http
+    scheme: bearer
+    bearerFormat: JWT
+    in: header
+    header: Authorization
+    format: 'Authorization: Bearer <token>'
+    token_source: >-
+      API tokens are generated in the One Trading UI. Each token is granted one
+      or more permission scopes at creation time.
+    sources: [openapi/one-trading-fast-openapi.yml]
+permissions:
+  model: named-scopes-per-token
+  scopes:
+    - { name: Read, grants: All GET endpoints (account balances, orders, trades, market data) }
+    - { name: Trade, grants: Place or cancel orders via POST/DELETE and private WebSocket trading channels }
+    - { name: Withdraw, grants: Deposit and withdraw funds to/from off-site wallets }
+    - { name: SUBACCOUNT_TRANSFER, grants: Transfer balances between the account holder's subaccounts (POST /v1/subaccounts/transfers) }
+websocket:
+  url: wss://streams.fast.onetrading.com
+  flow: Send an AUTHENTICATE message with api_token before subscribing to private channels; token must carry the Trade permission.
+  failure_codes: [AUTHENTICATION_FAILED, AUTH_ERROR]

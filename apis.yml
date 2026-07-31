@@ -1,22 +1,181 @@
 aid: one-trading
 name: One Trading
-description: One Trading is a company surfaced as a portfolio company of speedinvest and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  One Trading (One Trading Exchange B.V.) is an EU-regulated cryptocurrency and
+  derivatives exchange for retail and institutional traders, positioning itself
+  as "the world's fastest exchange." It offers spot crypto plus crypto futures
+  (up to 10x leverage), index futures and 24/7 equity futures. Its public "Fast
+  API" provides REST market-data and trading endpoints (currencies, instruments,
+  order book, candlesticks, ticker, fees, funding rates, orders, trades, futures
+  positions and subaccount transfers) at https://api.onetrading.com/fast, plus a
+  real-time WebSocket streams API at wss://streams.fast.onetrading.com. Formerly
+  operated as Bitpanda Pro. This profile was surfaced as a Speedinvest portfolio
+  company and enriched by the API Evangelist pipeline from the provider's public
+  documentation and live endpoints.
 url: https://raw.githubusercontent.com/api-evangelist/one-trading/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://framerusercontent.com/images/m2JxgHpA4PAHjVJIacTjS6wnvRY.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - speedinvest
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: enriched
+x-tier-reason: portfolio-lead-with-live-api
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- Cryptocurrency
+- Crypto Exchange
+- Trading
+- Derivatives
+- Futures
+- Financial Services
+- Market Data
+- WebSocket
+- Fintech
+apis:
+- name: One Trading WebSocket Streams API
+  description: >-
+    Real-time WebSocket API for market data (order book, price ticks, book ticker) and, after authenticating,
+    private trading events (order lifecycle, trades, settlement, funding payments, balance adjustments).
+  humanURL: https://docs.onetrading.com/websocket.md
+  baseURL: wss://streams.fast.onetrading.com
+  tags:
+  - WebSocket
+  - Streaming
+  - Events
+  properties:
+  - type: AsyncAPI
+    url: asyncapi/one-trading-streams-asyncapi.yml
+  - type: Webhooks
+    url: asyncapi/one-trading-streams-asyncapi.yml
+- aid: one-trading:one-trading-funding-api
+  name: One Trading Funding API
+  description: Subaccount balance transfers
+  humanURL: https://docs.onetrading.com
+  baseURL: https://api.onetrading.com/fast
+  tags:
+  - Funding
+  properties:
+  - type: OpenAPI
+    url: openapi/one-trading-funding-api-openapi.yml
+  - type: Documentation
+    url: https://docs.onetrading.com
+  - type: Authentication
+    url: authentication/one-trading-authentication.yml
+- aid: one-trading:one-trading-futures-api
+  name: One Trading Futures API
+  description: Futures positions, funding and portfolio endpoints
+  humanURL: https://docs.onetrading.com
+  baseURL: https://api.onetrading.com/fast
+  tags:
+  - Futures
+  properties:
+  - type: OpenAPI
+    url: openapi/one-trading-futures-api-openapi.yml
+  - type: Documentation
+    url: https://docs.onetrading.com
+  - type: Authentication
+    url: authentication/one-trading-authentication.yml
+- aid: one-trading:one-trading-public-api
+  name: One Trading Public API
+  description: Public market-data endpoints (no authentication)
+  humanURL: https://docs.onetrading.com
+  baseURL: https://api.onetrading.com/fast
+  tags:
+  - Public
+  properties:
+  - type: OpenAPI
+    url: openapi/one-trading-public-api-openapi.yml
+  - type: Documentation
+    url: https://docs.onetrading.com
+  - type: Authentication
+    url: authentication/one-trading-authentication.yml
+- aid: one-trading:one-trading-trading-api
+  name: One Trading Trading API
+  description: Account order and trade endpoints (Bearer token, TRADE/READ scope)
+  humanURL: https://docs.onetrading.com
+  baseURL: https://api.onetrading.com/fast
+  tags:
+  - Trading
+  properties:
+  - type: OpenAPI
+    url: openapi/one-trading-trading-api-openapi.yml
+  - type: Documentation
+    url: https://docs.onetrading.com
+  - type: Authentication
+    url: authentication/one-trading-authentication.yml
+common:
+- type: DomainSecurity
+  url: security/one-trading-domain-security.yml
+- type: Website
+  url: https://onetrading.com
+- type: Documentation
+  url: https://docs.onetrading.com
+- type: APIReference
+  url: https://docs.onetrading.com/rest/public/currencies
+- type: GettingStarted
+  url: https://support.onetrading.com/hc/en-gb/articles/16357722538129-What-should-I-know-about-One-Trading-API
+- type: Support
+  url: https://support.onetrading.com/hc/en-gb
+- type: Blog
+  url: https://onetrading.com/blog
+- type: GitHubOrganization
+  url: https://github.com/one-trading
+- type: Pricing
+  url: https://onetrading.com/fees
+- type: Login
+  url: https://account.onetrading.com/login
+- type: TermsOfService
+  url: https://onetrading.com/terms
+- type: PrivacyPolicy
+  url: https://onetrading.com/privacy-policy
+- type: LLMsTxt
+  url: llms/one-trading-llms.txt
+- type: Authentication
+  url: authentication/one-trading-authentication.yml
+- type: Conventions
+  url: conventions/one-trading-conventions.yml
+- type: Idempotency
+  url: conventions/one-trading-conventions.yml
+- type: ErrorCatalog
+  url: errors/one-trading-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/one-trading-lifecycle.yml
+- type: DataModel
+  url: data-model/one-trading-data-model.yml
+- type: Conformance
+  url: conformance/one-trading-conformance.yml
+- type: Packages
+  url: packages/one-trading-packages.yml
+- type: MCPServer
+  url: mcp/one-trading-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: AsyncAPI
+  url: asyncapi/one-trading-streams-asyncapi.yml
+- type: Webhooks
+  url: asyncapi/one-trading-streams-asyncapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 16
+  pass: local-v1

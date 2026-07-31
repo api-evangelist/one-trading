@@ -1,0 +1,32 @@
+generated: '2026-07-20'
+method: searched
+source:
+  - https://docs.onetrading.com/llms.txt
+  - live probes of https://api.onetrading.com
+versioning:
+  scheme: uri-path
+  current: v1
+  base_url: https://api.onetrading.com/fast
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: >-
+    No formal published deprecation policy or RFC 8594 Sunset/Deprecation header
+    support was found. However a prior-generation API surface exists and is
+    effectively deprecated (see deprecated_surfaces).
+deprecated_surfaces:
+  - base: https://api.onetrading.com/public/v1
+    status: decommissioned
+    evidence: >-
+      Endpoints resolve (HTTP 200) but return empty arrays for currencies /
+      instruments / market-ticker; this is the legacy Bitpanda-Pro-style API,
+      superseded by the Fast API at /fast/v1.
+sla:
+  url: null
+  uptime_target: null
+status_page:
+  url: null
+  notes: >-
+    No live status page found. status.onetrading.com does not resolve and the
+    onetrading.statuspage.io subdomain is unclaimed (redirects to Atlassian).
+deprecated_operations: []

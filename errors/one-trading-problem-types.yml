@@ -1,0 +1,49 @@
+generated: '2026-07-20'
+method: derived
+source:
+  - openapi/one-trading-fast-openapi.yml
+  - live probes of https://api.onetrading.com/fast/v1
+  - https://docs.onetrading.com/websocket/authenticate.md
+format: custom
+envelope:
+  description: >-
+    One Trading returns a flat JSON error envelope carrying a single
+    machine-readable code string on the "error" field (both REST and WebSocket).
+    Some infrastructure-level failures return {"message": "..."} instead
+    (e.g. 403 {"message":"Forbidden"}). Errors are NOT RFC 9457 problem+json.
+  field: error
+  example: '{"error":"INVALID_INSTRUMENT_CODE"}'
+problems:
+  - code: INVALID_INSTRUMENT_CODE
+    status: 400
+    title: Invalid instrument code
+    observed_on:
+      - GET /v1/order-book/{instrument_code}
+      - GET /v1/candlesticks/{instrument_code}
+    remediation: Use an instrument_code returned by GET /v1/instruments.
+    verified: live
+  - code: AUTHENTICATION_FAILED
+    title: WebSocket authentication failed
+    observed_on: [AUTHENTICATE message]
+    remediation: Provide a valid API token with the Trade permission.
+    verified: docs
+  - code: AUTH_ERROR
+    title: Missing required permission on token
+    observed_on: [WebSocket private channels]
+    remediation: Regenerate the API token with the Trade permission enabled.
+    verified: docs
+  - status: 403
+    title: Forbidden
+    envelope_field: message
+    observed_on: [GET /v1/account/balances (no/invalid token)]
+    remediation: "Send a valid 'Authorization: Bearer <token>' header with the required scope."
+    verified: live
+  - status: 400
+    title: Bad Request
+    remediation: The request body or parameters are malformed; inspect the error code.
+    verified: docs
+  - status: 422
+    title: Unprocessable Entity
+    observed_on: [POST /v1/account/orders]
+    remediation: Order parameters failed validation (e.g. price/amount precision, min size).
+    verified: docs

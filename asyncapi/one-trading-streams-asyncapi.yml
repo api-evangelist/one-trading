@@ -1,0 +1,244 @@
+asyncapi: 2.6.0
+info:
+  title: One Trading WebSocket Streams API
+  version: '1.0'
+  description: >-
+    Real-time WebSocket (WSS) API for the One Trading exchange. Clients receive
+    market data feeds (order book, price ticks, book ticker) and, after
+    authenticating, private trading event streams (order lifecycle, trade
+    execution, settlement, funding payments, balance adjustments). Orders can be
+    created and cancelled over the same connection.
+
+    Provenance: reconstructed by API Evangelist from the provider's public
+    documentation index (https://docs.onetrading.com/llms.txt) and the WebSocket
+    authentication page (https://docs.onetrading.com/websocket/authenticate.md).
+    Message payload shapes below reflect the documented channel catalog; this is
+    not the provider's official AsyncAPI document.
+  x-provenance:
+    generated: '2026-07-20'
+    method: generated
+    source:
+      - https://docs.onetrading.com/llms.txt
+      - https://docs.onetrading.com/websocket/authenticate.md
+servers:
+  production:
+    url: streams.fast.onetrading.com
+    protocol: wss
+    description: One Trading production WebSocket endpoint (wss://streams.fast.onetrading.com)
+defaultContentType: application/json
+channels:
+  /:
+    description: >-
+      Single multiplexed WebSocket connection. Clients send AUTHENTICATE and
+      SUBSCRIBE control messages and receive market-data and (once authenticated)
+      private trading events. All messages carry a "type" discriminator.
+    subscribe:
+      operationId: receiveEvents
+      summary: Messages the server sends to the client.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/Authenticated'
+          - $ref: '#/components/messages/OrderBookSnapshot'
+          - $ref: '#/components/messages/OrderBookUpdate'
+          - $ref: '#/components/messages/PriceTick'
+          - $ref: '#/components/messages/BookTick'
+          - $ref: '#/components/messages/OrderBooked'
+          - $ref: '#/components/messages/OrderRejected'
+          - $ref: '#/components/messages/OrderClosed'
+          - $ref: '#/components/messages/OrderFullyFilled'
+          - $ref: '#/components/messages/TradeExecuted'
+          - $ref: '#/components/messages/Settlement'
+          - $ref: '#/components/messages/FundingPayment'
+          - $ref: '#/components/messages/BalanceAdjustment'
+          - $ref: '#/components/messages/ErrorMessage'
+    publish:
+      operationId: sendCommands
+      summary: Messages the client sends to the server.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/Authenticate'
+          - $ref: '#/components/messages/Subscribe'
+          - $ref: '#/components/messages/Ping'
+          - $ref: '#/components/messages/CreateOrder'
+          - $ref: '#/components/messages/CancelAllOrders'
+          - $ref: '#/components/messages/CancelOrderByOrderId'
+          - $ref: '#/components/messages/CancelOrderByClientId'
+          - $ref: '#/components/messages/MoveOrder'
+          - $ref: '#/components/messages/MarginUpdate'
+components:
+  messages:
+    Authenticate:
+      name: AUTHENTICATE
+      summary: Authenticate the connection with an API token (Trade permission required).
+      payload:
+        type: object
+        properties:
+          type: { type: string, const: AUTHENTICATE }
+          api_token: { type: string }
+        required: [type, api_token]
+    Authenticated:
+      name: AUTHENTICATED
+      summary: Authentication succeeded.
+      payload:
+        type: object
+        properties:
+          type: { type: string, const: AUTHENTICATED }
+    Subscribe:
+      name: SUBSCRIBE
+      summary: Subscribe to one or more channels for a set of instruments.
+      payload:
+        type: object
+        properties:
+          type: { type: string, const: SUBSCRIBE }
+    Ping:
+      name: PING
+      summary: Keep-alive ping; server replies with PONG.
+      payload:
+        type: object
+        properties:
+          type: { type: string, const: PING }
+    CreateOrder:
+      name: CREATE_ORDER
+      summary: Create an order over the WebSocket connection.
+      payload:
+        type: object
+        properties:
+          type: { type: string, const: CREATE_ORDER }
+          instrument_code: { type: string }
+          side: { type: string, enum: [BUY, SELL] }
+          amount: { type: string }
+          price: { type: string }
+          client_id: { type: string, format: uuid }
+    CancelAllOrders:
+      name: CANCEL_ALL_ORDERS
+      payload:
+        type: object
+        properties:
+          type: { type: string, const: CANCEL_ALL_ORDERS }
+    CancelOrderByOrderId:
+      name: CANCEL_ORDER
+      payload:
+        type: object
+        properties:
+          type: { type: string, const: CANCEL_ORDER }
+          order_id: { type: string, format: uuid }
+    CancelOrderByClientId:
+      name: CANCEL_ORDER_BY_CLIENT_ID
+      payload:
+        type: object
+        properties:
+          type: { type: string, const: CANCEL_ORDER_BY_CLIENT_ID }
+          client_id: { type: string, format: uuid }
+    MoveOrder:
+      name: MOVE_ORDER
+      summary: Move (reprice) an existing order.
+      payload:
+        type: object
+        properties:
+          type: { type: string, const: MOVE_ORDER }
+    MarginUpdate:
+      name: MARGIN_UPDATE
+      summary: Update margin on a futures position.
+      payload:
+        type: object
+        properties:
+          type: { type: string, const: MARGIN_UPDATE }
+    OrderBookSnapshot:
+      name: ORDER_BOOK_SNAPSHOT
+      summary: Full order book snapshot for a subscribed instrument.
+      payload:
+        type: object
+        properties:
+          type: { type: string, const: ORDER_BOOK_SNAPSHOT }
+          instrument_code: { type: string }
+    OrderBookUpdate:
+      name: ORDER_BOOK_UPDATE
+      summary: Incremental order book update.
+      payload:
+        type: object
+        properties:
+          type: { type: string, const: ORDER_BOOK_UPDATE }
+          instrument_code: { type: string }
+    PriceTick:
+      name: PRICE_TICK
+      summary: Trade price tick for a subscribed instrument.
+      payload:
+        type: object
+        properties:
+          type: { type: string, const: PRICE_TICK }
+          instrument_code: { type: string }
+          price: { type: string }
+    BookTick:
+      name: BOOK_TICK
+      summary: Best bid/ask (top-of-book) update.
+      payload:
+        type: object
+        properties:
+          type: { type: string, const: BOOK_TICK }
+          instrument_code: { type: string }
+    OrderBooked:
+      name: ORDER_BOOKED
+      summary: An order was accepted and booked.
+      payload: { $ref: '#/components/schemas/OrderEvent' }
+    OrderRejected:
+      name: ORDER_REJECTED
+      summary: An order was rejected.
+      payload: { $ref: '#/components/schemas/OrderEvent' }
+    OrderClosed:
+      name: ORDER_CLOSED
+      summary: An order was closed/cancelled.
+      payload: { $ref: '#/components/schemas/OrderEvent' }
+    OrderFullyFilled:
+      name: ORDER_FULLY_FILLED
+      summary: An order was fully filled.
+      payload: { $ref: '#/components/schemas/OrderEvent' }
+    TradeExecuted:
+      name: TRADE_EXECUTED
+      summary: A trade was executed against one of the client's orders.
+      payload:
+        type: object
+        properties:
+          type: { type: string, const: TRADE_EXECUTED }
+          instrument_code: { type: string }
+          amount: { type: string }
+          price: { type: string }
+    Settlement:
+      name: SETTLEMENT
+      summary: A futures settlement event.
+      payload:
+        type: object
+        properties:
+          type: { type: string, const: SETTLEMENT }
+    FundingPayment:
+      name: FUNDING_PAYMENT
+      summary: A futures funding payment was applied.
+      payload:
+        type: object
+        properties:
+          type: { type: string, const: FUNDING_PAYMENT }
+    BalanceAdjustment:
+      name: BALANCE_ADJUSTMENT
+      summary: An account balance was adjusted.
+      payload:
+        type: object
+        properties:
+          type: { type: string, const: BALANCE_ADJUSTMENT }
+    ErrorMessage:
+      name: ERROR
+      summary: Error envelope; carries a single machine-readable code.
+      payload:
+        type: object
+        properties:
+          error: { type: string, example: AUTHENTICATION_FAILED }
+  schemas:
+    OrderEvent:
+      type: object
+      properties:
+        type: { type: string }
+        order_id: { type: string, format: uuid }
+        client_id: { type: string, format: uuid }
+        instrument_code: { type: string }
+        side: { type: string, enum: [BUY, SELL] }
+        price: { type: string }
+        amount: { type: string }
+        status: { type: string }

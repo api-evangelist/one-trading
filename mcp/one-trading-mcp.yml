@@ -1,0 +1,33 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/one-trading-fast-openapi.yml
+notes: >-
+  No official or hosted One Trading MCP server was found. The tool list below is
+  a candidate derived one-to-one from the Fast API operations, provided as a
+  starting point for an MCP wrapper. Read-only market-data tools require no
+  credentials; account/trading tools require a Bearer API token.
+server:
+  name: one-trading
+  transport: stdio
+  url: null
+tools:
+  - { name: get_currencies, description: List all available currencies, source_operation: 'openapi/one-trading-fast-openapi.yml#getCurrencies' }
+  - { name: get_instruments, description: List tradable instrument pairs, source_operation: 'openapi/one-trading-fast-openapi.yml#getInstruments' }
+  - { name: get_order_book, description: Get an instrument's order book, source_operation: 'openapi/one-trading-fast-openapi.yml#getOrderBook' }
+  - { name: get_candlesticks, description: Get instrument candlesticks, source_operation: 'openapi/one-trading-fast-openapi.yml#getCandlesticks' }
+  - { name: get_market_ticker, description: Get 24h market ticker for all markets, source_operation: 'openapi/one-trading-fast-openapi.yml#getMarketTicker' }
+  - { name: get_market_ticker_for_instrument, description: Get market ticker for one instrument, source_operation: 'openapi/one-trading-fast-openapi.yml#getMarketTickerForInstrument' }
+  - { name: get_fee_groups, description: List fee groups and tiers, source_operation: 'openapi/one-trading-fast-openapi.yml#getFeeGroups' }
+  - { name: get_time, description: Get server time, source_operation: 'openapi/one-trading-fast-openapi.yml#getTime' }
+  - { name: get_current_funding_rate, description: Get current futures funding rates, source_operation: 'openapi/one-trading-fast-openapi.yml#getCurrentFundingRate' }
+  - { name: get_funding_rate_history, description: Get historical funding rates, source_operation: 'openapi/one-trading-fast-openapi.yml#getFundingRateHistory' }
+  - { name: get_balances, description: Get account balances (auth), source_operation: 'openapi/one-trading-fast-openapi.yml#getBalances' }
+  - { name: get_orders, description: List account orders (auth), source_operation: 'openapi/one-trading-fast-openapi.yml#getOrders' }
+  - { name: create_order, description: Place a LIMIT order (auth, TRADE scope), source_operation: 'openapi/one-trading-fast-openapi.yml#createOrder' }
+  - { name: cancel_all_orders, description: Cancel all open orders (auth), source_operation: 'openapi/one-trading-fast-openapi.yml#cancelAllOrders' }
+  - { name: cancel_order_by_order_id, description: Cancel an order by order_id (auth), source_operation: 'openapi/one-trading-fast-openapi.yml#cancelOrderByOrderId' }
+  - { name: get_trades, description: List account trades (auth), source_operation: 'openapi/one-trading-fast-openapi.yml#getTrades' }
+  - { name: get_futures_summary, description: Get futures portfolio summary (auth), source_operation: 'openapi/one-trading-fast-openapi.yml#getFuturesSummary' }
+  - { name: get_futures_open_positions, description: List open futures positions (auth), source_operation: 'openapi/one-trading-fast-openapi.yml#getFuturesOpenPositions' }
+  - { name: transfer_subaccount_balance, description: Transfer balance between subaccounts (auth, SUBACCOUNT_TRANSFER scope), source_operation: 'openapi/one-trading-fast-openapi.yml#transferSubaccountBalance' }
