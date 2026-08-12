@@ -119,6 +119,8 @@ apis:
   - type: Authentication
     url: authentication/one-trading-authentication.yml
 common:
+- type: Overlay
+  url: overlays/one-trading-fast-overlay.yaml
 - type: DomainSecurity
   url: security/one-trading-domain-security.yml
 - type: Website
