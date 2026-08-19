@@ -1,0 +1,251 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "One Fast Funding Trading API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Trading",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Balances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/account/balances"
+          },
+          "docs": "Returns the balance details for an account. Requires READ scope."
+        },
+        {
+          "info": {
+            "name": "Account Fees",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/account/fees"
+          },
+          "docs": "Current fees for account, calculated and combined across all subaccounts. Requires READ scope."
+        },
+        {
+          "info": {
+            "name": "Get Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/account/orders",
+            "params": [
+              {
+                "name": "instrument_code",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max_page_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of orders. Requires READ scope."
+        },
+        {
+          "info": {
+            "name": "Create Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.onetrading.com/fast/v1/account/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new order. Requires TRADE scope."
+        },
+        {
+          "info": {
+            "name": "Cancel All Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.onetrading.com/fast/v1/account/orders"
+          },
+          "docs": "Submits a cancel request for all open orders of an account. Requires TRADE scope."
+        },
+        {
+          "info": {
+            "name": "Get Order by Order ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/account/orders/:order_id",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get information about an existing order using the exchange generated order_id."
+        },
+        {
+          "info": {
+            "name": "Cancel Order by Order ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.onetrading.com/fast/v1/account/orders/:order_id",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Submits a request to close an open order by providing a valid order_id. Requires TRADE scope."
+        },
+        {
+          "info": {
+            "name": "Get Order by Client ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/account/orders/client/:client_id",
+            "params": [
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get information about an existing order using the user or exchange generated client_id."
+        },
+        {
+          "info": {
+            "name": "Cancel Order by Client ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.onetrading.com/fast/v1/account/orders/client/:client_id",
+            "params": [
+              {
+                "name": "client_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Submits a request to cancel an open order by providing a valid client_id. Requires TRADE scope."
+        },
+        {
+          "info": {
+            "name": "Get Trades for Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/account/orders/:order_id/trades",
+            "params": [
+              {
+                "name": "order_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get list of trades for a specific order."
+        },
+        {
+          "info": {
+            "name": "Get Trades",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/account/trades",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max_page_size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "cursor",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves trades executed within the specified date range, sorted by timestamp descending."
+        },
+        {
+          "info": {
+            "name": "Get Trade by Trade ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/account/trade/:trade_id",
+            "params": [
+              {
+                "name": "trade_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get information about an executed trade using the exchange generated trade_id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

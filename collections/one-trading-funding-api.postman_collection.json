@@ -1,0 +1,234 @@
+{
+  "item": [
+    {
+      "id": "f1a5b135-1f25-4fd6-8bc4-f60ec92e8bfc",
+      "name": "Funding",
+      "description": {
+        "content": "Subaccount balance transfers",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "27c61df5-c09a-425d-a638-e8316a250db2",
+          "name": "Transfer Subaccount Balance",
+          "request": {
+            "name": "Transfer Subaccount Balance",
+            "description": {
+              "content": "Transfers an amount of a single currency between two accounts belonging to the authenticated account holder (main account or any subaccount). Requires SUBACCOUNT_TRANSFER scope.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "subaccounts",
+                "transfers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"<string>\",\n  \"amount\": \"<string>\",\n  \"from\": \"<string>\",\n  \"to\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c5bf0275-6761-4def-9311-2238c57704b8",
+              "name": "Transfer accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subaccounts",
+                    "transfers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currency\": \"<string>\",\n  \"amount\": \"<string>\",\n  \"from\": \"<string>\",\n  \"to\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "628a2ad4-9e33-4172-b917-10b6fb543fde",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subaccounts",
+                    "transfers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currency\": \"<string>\",\n  \"amount\": \"<string>\",\n  \"from\": \"<string>\",\n  \"to\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "adf024ef-9708-4e16-8812-62ee5bfc7cca",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "subaccounts",
+                    "transfers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currency\": \"<string>\",\n  \"amount\": \"<string>\",\n  \"from\": \"<string>\",\n  \"to\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.onetrading.com/fast",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ab1c4bf9-ca9d-4c6d-b9ca-f61c7e857588",
+    "name": "One Trading Fast Funding API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the One Trading exchange (\"Fast API\"). Public market-data endpoints (currencies, instruments, order book, candlesticks, market ticker, fees, funding rates, server time) require no authentication. Account, trading and futures endpoints require a Bearer API token with the appropriate permission scope (Read / Trade / Withdraw / SUBACCOUNT_TRANSFER).\nProvenance: this specification was reconstructed by API Evangelist from the provider's public documentation index (https://docs.onetrading.com/llms.txt) and from live responses of the public endpoints. Request/response schemas for public endpoints reflect real observed payloads; authenticated operations are modeled from the documented operation catalog. It is not the provider's official machine-readable contract.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "One Trading Fast Funding Futures API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Futures",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Current Funding Rate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/funding-rate",
+            "params": [
+              {
+                "name": "instrument_code",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve the latest preliminary funding rate for one or all futures instruments. Recalculated every minute and settled every 4 hours."
+        },
+        {
+          "info": {
+            "name": "Funding Rate History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/funding-rate/history",
+            "params": [
+              {
+                "name": "instrument_code",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve the historical settled funding rates for a specific instrument, updated every 4 hours."
+        },
+        {
+          "info": {
+            "name": "Funding Rate Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/funding-rate/settings"
+          },
+          "docs": "Returns an array of funding rate settings per instrument."
+        },
+        {
+          "info": {
+            "name": "Futures Portfolio Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/account/futures/summary"
+          },
+          "docs": "Real-time summary of a user's futures portfolio (equity, margin, positions), updated every minute."
+        },
+        {
+          "info": {
+            "name": "Get Futures Open Positions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/account/futures/positions"
+          },
+          "docs": "All open futures positions for the authenticated user (size, direction, entry price, realised PnL, timestamps)."
+        },
+        {
+          "info": {
+            "name": "Positions History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/account/futures/positions-history",
+            "params": [
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves closed futures positions opened within a requested date range."
+        },
+        {
+          "info": {
+            "name": "Position Trades",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/account/futures/positions/:position_id/trades",
+            "params": [
+              {
+                "name": "position_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns an array of trade records for the specified position."
+        },
+        {
+          "info": {
+            "name": "Position Funding Payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/account/futures/positions/:position_id/funding-payments",
+            "params": [
+              {
+                "name": "position_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns funding payment records for the specified position, sorted by timestamp descending."
+        },
+        {
+          "info": {
+            "name": "Funding Payments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/account/futures/funding-payments",
+            "params": [
+              {
+                "name": "instrument_code",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of funding payments, grouped by instrument code and sorted descending by timestamp."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

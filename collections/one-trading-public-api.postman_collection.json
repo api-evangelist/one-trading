@@ -1,0 +1,1203 @@
+{
+  "item": [
+    {
+      "id": "81725246-b803-4ea0-9161-21d04d2b1a6e",
+      "name": "Public",
+      "description": {
+        "content": "Public market-data endpoints (no authentication)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "00fadc66-755d-467e-a9d4-dc56cf6b5004",
+          "name": "Currencies",
+          "request": {
+            "name": "Currencies",
+            "description": {
+              "content": "Get a list of all available currencies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "currencies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1646eab7-af36-4125-8d6f-1e675a048dbf",
+              "name": "Array of currencies",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "currencies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"BTC\",\n    \"precision\": 8,\n    \"name\": \"Bitcoin\",\n    \"unified_cryptoasset_id\": 1,\n    \"collateral_percentage\": 71\n  },\n  {\n    \"code\": \"BTC\",\n    \"precision\": 8,\n    \"name\": \"Bitcoin\",\n    \"unified_cryptoasset_id\": 1,\n    \"collateral_percentage\": 53\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc262309-616a-49f1-8cb3-1b1a845e2f58",
+          "name": "Instruments",
+          "request": {
+            "name": "Instruments",
+            "description": {
+              "content": "Retrieves a list of available instrument pairs on the exchange, including base/quote assets, precision, min/max trading limits and market state.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "instruments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by market type."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6248bc6a-dc76-4d7f-aa03-a30e97286217",
+              "name": "Array of instruments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "instruments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"base\": {\n      \"code\": \"BTC\",\n      \"precision\": 8\n    },\n    \"quote\": {\n      \"code\": \"BTC\",\n      \"precision\": 8\n    },\n    \"amount_precision\": 5,\n    \"market_precision\": 2,\n    \"min_size\": \"10.0\",\n    \"min_price\": \"1000\",\n    \"max_price\": \"string\",\n    \"state\": \"ACTIVE\"\n  },\n  {\n    \"base\": {\n      \"code\": \"BTC\",\n      \"precision\": 8\n    },\n    \"quote\": {\n      \"code\": \"BTC\",\n      \"precision\": 8\n    },\n    \"amount_precision\": 5,\n    \"market_precision\": 2,\n    \"min_size\": \"10.0\",\n    \"min_price\": \"1000\",\n    \"max_price\": \"string\",\n    \"state\": \"ACTIVE\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c32eeed-1cc2-465b-9e8a-b6d985a76962",
+          "name": "Candlesticks",
+          "request": {
+            "name": "Candlesticks",
+            "description": {
+              "content": "Get instrument candlesticks for a specified time period (up to 5000 candlesticks). Supports a countBack parameter that takes precedence over 'from' when provided.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "candlesticks",
+                ":instrument_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "unit",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "period",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "countBack",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "instrument_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac9025ba-d994-4cb0-99ad-54aefd516f6c",
+              "name": "Candlestick series",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "candlesticks",
+                    ":instrument_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "unit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "countBack",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instrument_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"data\",\n  \"candlesticks\": [\n    {\n      \"last_sequence\": 6887,\n      \"instrument_code\": \"string\",\n      \"granularity\": {\n        \"unit\": \"string\",\n        \"period\": 5700\n      },\n      \"open\": \"string\",\n      \"high\": \"string\",\n      \"low\": \"string\",\n      \"close\": \"string\",\n      \"volume\": \"string\",\n      \"time\": \"1963-05-19T08:57:44.177Z\"\n    },\n    {\n      \"last_sequence\": 7486,\n      \"instrument_code\": \"string\",\n      \"granularity\": {\n        \"unit\": \"string\",\n        \"period\": 1356\n      },\n      \"open\": \"string\",\n      \"high\": \"string\",\n      \"low\": \"string\",\n      \"close\": \"string\",\n      \"volume\": \"string\",\n      \"time\": \"1949-05-13T06:46:28.416Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e72c945-ec7d-470c-a3fc-567acfd8b9fa",
+              "name": "Invalid instrument code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "candlesticks",
+                    ":instrument_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "unit",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "period",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "countBack",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instrument_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"INVALID_INSTRUMENT_CODE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1b3a536-4525-4647-83ef-9983777780d9",
+          "name": "Order Book",
+          "request": {
+            "name": "Order Book",
+            "description": {
+              "content": "Get the specified instrument's order book.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "order-book",
+                ":instrument_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "depth",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "instrument_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0163655c-1d0c-4b75-a966-e75fa12adf29",
+              "name": "Order book",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "order-book",
+                    ":instrument_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "depth",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instrument_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"instrument_code\": \"BTC_USDC\",\n  \"time\": 719,\n  \"asks\": [\n    {\n      \"price\": \"65483.23\",\n      \"amount\": \"0.32988\"\n    },\n    {\n      \"price\": \"65483.23\",\n      \"amount\": \"0.32988\"\n    }\n  ],\n  \"bids\": [\n    {\n      \"price\": \"65483.23\",\n      \"amount\": \"0.32988\"\n    },\n    {\n      \"price\": \"65483.23\",\n      \"amount\": \"0.32988\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e0ab4378-76d0-4267-8f65-ac89e067958a",
+              "name": "Invalid instrument code",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "order-book",
+                    ":instrument_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "depth",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instrument_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"INVALID_INSTRUMENT_CODE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d24887cd-0d6c-478e-9eb9-c383fb9f1821",
+          "name": "Market Ticker",
+          "request": {
+            "name": "Market Ticker",
+            "description": {
+              "content": "The market ticker provides information about the current state of a market and summary statistics over 24 hours, updated every minute.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "market-ticker"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "99b8f5a1-1319-4444-8fec-158eaf395508",
+              "name": "Array of market tickers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "market-ticker"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"instrument_code\": \"string\",\n    \"last_price\": \"string\",\n    \"high\": \"string\",\n    \"low\": \"string\",\n    \"highest_bid\": \"string\",\n    \"lowest_ask\": \"string\",\n    \"base_volume\": \"string\",\n    \"price_change\": \"string\"\n  },\n  {\n    \"instrument_code\": \"string\",\n    \"last_price\": \"string\",\n    \"high\": \"string\",\n    \"low\": \"string\",\n    \"highest_bid\": \"string\",\n    \"lowest_ask\": \"string\",\n    \"base_volume\": \"string\",\n    \"price_change\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1be4a95c-6a7f-45af-b090-b3296bda3f57",
+          "name": "Market Ticker For Instrument",
+          "request": {
+            "name": "Market Ticker For Instrument",
+            "description": {
+              "content": "Get market statistics on a single market.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "market-ticker",
+                ":instrument_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "instrument_code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48f5d1ce-4706-46c8-8a72-d719347f6b6e",
+              "name": "Market ticker",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "market-ticker",
+                    ":instrument_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "instrument_code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"instrument_code\": \"string\",\n  \"last_price\": \"string\",\n  \"high\": \"string\",\n  \"low\": \"string\",\n  \"highest_bid\": \"string\",\n  \"lowest_ask\": \"string\",\n  \"base_volume\": \"string\",\n  \"price_change\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b68afc17-4e9d-46cd-8a45-f9eea3e65328",
+          "name": "Fee Groups",
+          "request": {
+            "name": "Fee Groups",
+            "description": {
+              "content": "Returns details of all fee groups. Fee groups are separated into product types.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "fees"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5fba833a-6dc9-49bd-9676-7b612b2b4d7a",
+              "name": "Array of fee groups",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fees"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"fee_group_id\": \"SPOT\",\n    \"display_text\": \"string\",\n    \"volume_currency\": \"EUR\",\n    \"fee_tiers\": [\n      {\n        \"volume\": 9617.955011595168,\n        \"fee_group_id\": \"string\",\n        \"maker_fee\": \"string\",\n        \"taker_fee\": \"string\"\n      },\n      {\n        \"volume\": 1023.0485976551884,\n        \"fee_group_id\": \"string\",\n        \"maker_fee\": \"string\",\n        \"taker_fee\": \"string\"\n      }\n    ]\n  },\n  {\n    \"fee_group_id\": \"SPOT\",\n    \"display_text\": \"string\",\n    \"volume_currency\": \"EUR\",\n    \"fee_tiers\": [\n      {\n        \"volume\": 346.3801338893613,\n        \"fee_group_id\": \"string\",\n        \"maker_fee\": \"string\",\n        \"taker_fee\": \"string\"\n      },\n      {\n        \"volume\": 4907.068590697876,\n        \"fee_group_id\": \"string\",\n        \"maker_fee\": \"string\",\n        \"taker_fee\": \"string\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca516495-5fb9-4706-8b74-b1c5e5a93c81",
+          "name": "Time",
+          "request": {
+            "name": "Time",
+            "description": {
+              "content": "Returns the current server time in UTC.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "time"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd89305d-8643-4980-8be0-95a8585d9384",
+              "name": "Server time",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "time"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"iso\": \"1978-09-21T20:38:48.386Z\",\n  \"epoch_millis\": 3317\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd1884d6-b040-4ce4-837c-1bb5f456a48a",
+          "name": "Current Funding Rate",
+          "request": {
+            "name": "Current Funding Rate",
+            "description": {
+              "content": "Retrieve the latest preliminary funding rate for one or all futures instruments. Recalculated every minute and settled every 4 hours.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "funding-rate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "instrument_code",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0b97422d-fcc9-4850-b945-0f039c4ac12e",
+              "name": "Current funding rates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "funding-rate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "instrument_code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"instrument_code\": \"string\",\n    \"funding_rate\": \"string\",\n    \"mark_price\": \"string\",\n    \"time\": 1906,\n    \"timestamp\": \"1986-07-07T08:16:06.749Z\"\n  },\n  {\n    \"instrument_code\": \"string\",\n    \"funding_rate\": \"string\",\n    \"mark_price\": \"string\",\n    \"time\": 3905,\n    \"timestamp\": \"2005-04-15T11:25:08.480Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c9591eff-62ed-4a15-a5be-14ce0ab2ca6d",
+          "name": "Funding Rate History",
+          "request": {
+            "name": "Funding Rate History",
+            "description": {
+              "content": "Retrieve the historical settled funding rates for a specific instrument, updated every 4 hours.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "funding-rate",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "instrument_code",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d868d07-1c25-450a-9f65-e6b370a7d1da",
+              "name": "Funding rate history",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "funding-rate",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "instrument_code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"funding_rates\": [\n    {\n      \"instrument_code\": \"string\",\n      \"funding_rate\": \"string\",\n      \"mark_price\": \"string\",\n      \"time\": 2249,\n      \"timestamp\": \"1971-04-21T08:02:41.927Z\"\n    },\n    {\n      \"instrument_code\": \"string\",\n      \"funding_rate\": \"string\",\n      \"mark_price\": \"string\",\n      \"time\": 3173,\n      \"timestamp\": \"1974-10-13T23:26:05.871Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "428837ad-27d6-4d8a-b2c1-9edce6733342",
+          "name": "Funding Rate Settings",
+          "request": {
+            "name": "Funding Rate Settings",
+            "description": {
+              "content": "Returns an array of funding rate settings per instrument.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "funding-rate",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cde3037e-6a89-4a0b-945a-dd7b7ca2bb05",
+              "name": "Funding rate settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "funding-rate",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"instrument_code\": \"string\",\n    \"state\": \"ACTIVE\",\n    \"market_offset\": 5704.886869719345,\n    \"clamp_threshold\": 7016.331301964797,\n    \"annual_interest_rate\": 9525.083116401696\n  },\n  {\n    \"instrument_code\": \"string\",\n    \"state\": \"ACTIVE\",\n    \"market_offset\": 9178.336788391314,\n    \"clamp_threshold\": 5367.4155678655525,\n    \"annual_interest_rate\": 7378.205497466371\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.onetrading.com/fast",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b2fd76ce-e27f-4272-99e1-1fca78ecdc00",
+    "name": "One Trading Fast Funding Public API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the One Trading exchange (\"Fast API\"). Public market-data endpoints (currencies, instruments, order book, candlesticks, market ticker, fees, funding rates, server time) require no authentication. Account, trading and futures endpoints require a Bearer API token with the appropriate permission scope (Read / Trade / Withdraw / SUBACCOUNT_TRANSFER).\nProvenance: this specification was reconstructed by API Evangelist from the provider's public documentation index (https://docs.onetrading.com/llms.txt) and from live responses of the public endpoints. Request/response schemas for public endpoints reflect real observed payloads; authenticated operations are modeled from the documented operation catalog. It is not the provider's official machine-readable contract.",
+      "type": "text/plain"
+    }
+  }
+}

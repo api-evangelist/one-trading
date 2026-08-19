@@ -1,0 +1,822 @@
+{
+  "item": [
+    {
+      "id": "b14135e8-6c75-4eac-ad0b-f8e2e5008040",
+      "name": "Futures",
+      "description": {
+        "content": "Futures positions, funding and portfolio endpoints",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "30e0b096-03a9-4542-b378-54e7d1772e86",
+          "name": "Current Funding Rate",
+          "request": {
+            "name": "Current Funding Rate",
+            "description": {
+              "content": "Retrieve the latest preliminary funding rate for one or all futures instruments. Recalculated every minute and settled every 4 hours.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "funding-rate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "instrument_code",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5d6a6248-c4a1-4481-9dfb-e28d4ca8f7c1",
+              "name": "Current funding rates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "funding-rate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "instrument_code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"instrument_code\": \"string\",\n    \"funding_rate\": \"string\",\n    \"mark_price\": \"string\",\n    \"time\": 2996,\n    \"timestamp\": \"2005-03-23T22:15:34.778Z\"\n  },\n  {\n    \"instrument_code\": \"string\",\n    \"funding_rate\": \"string\",\n    \"mark_price\": \"string\",\n    \"time\": 6444,\n    \"timestamp\": \"2025-10-27T19:59:18.995Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8a411b5-340a-4095-b4ca-2cadbcce123d",
+          "name": "Funding Rate History",
+          "request": {
+            "name": "Funding Rate History",
+            "description": {
+              "content": "Retrieve the historical settled funding rates for a specific instrument, updated every 4 hours.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "funding-rate",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "instrument_code",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e990008b-27ce-4c1c-9151-4317c802fa72",
+              "name": "Funding rate history",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "funding-rate",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "instrument_code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"funding_rates\": [\n    {\n      \"instrument_code\": \"string\",\n      \"funding_rate\": \"string\",\n      \"mark_price\": \"string\",\n      \"time\": 7023,\n      \"timestamp\": \"1966-06-27T03:33:55.859Z\"\n    },\n    {\n      \"instrument_code\": \"string\",\n      \"funding_rate\": \"string\",\n      \"mark_price\": \"string\",\n      \"time\": 74,\n      \"timestamp\": \"1948-12-05T10:10:52.193Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f073134e-a043-4194-8fcf-39b53444daec",
+          "name": "Funding Rate Settings",
+          "request": {
+            "name": "Funding Rate Settings",
+            "description": {
+              "content": "Returns an array of funding rate settings per instrument.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "funding-rate",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b5b67c7-080b-438e-ab49-7f3450fad17b",
+              "name": "Funding rate settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "funding-rate",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"instrument_code\": \"string\",\n    \"state\": \"ACTIVE\",\n    \"market_offset\": 6571.670421962722,\n    \"clamp_threshold\": 5719.969821221817,\n    \"annual_interest_rate\": 8726.964281609564\n  },\n  {\n    \"instrument_code\": \"string\",\n    \"state\": \"ACTIVE\",\n    \"market_offset\": 3524.433687284435,\n    \"clamp_threshold\": 1201.8809215695815,\n    \"annual_interest_rate\": 2805.7138021025007\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "981a5c70-d425-490e-8ff7-36e9f19f1a17",
+          "name": "Futures Portfolio Summary",
+          "request": {
+            "name": "Futures Portfolio Summary",
+            "description": {
+              "content": "Real-time summary of a user's futures portfolio (equity, margin, positions), updated every minute.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "account",
+                "futures",
+                "summary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8bbffaf6-ef54-4117-8724-4c6f56fa7eba",
+              "name": "Futures summary",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "futures",
+                    "summary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75a3bb5c-d16c-4203-b331-31177b7a79a8",
+          "name": "Get Futures Open Positions",
+          "request": {
+            "name": "Get Futures Open Positions",
+            "description": {
+              "content": "All open futures positions for the authenticated user (size, direction, entry price, realised PnL, timestamps).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "account",
+                "futures",
+                "positions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "db937b40-f29d-4af7-949d-bc35e06299b3",
+              "name": "Open positions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "futures",
+                    "positions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7fd6df97-8cec-4e26-82ee-5e6a6ff56036",
+          "name": "Positions History",
+          "request": {
+            "name": "Positions History",
+            "description": {
+              "content": "Retrieves closed futures positions opened within a requested date range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "account",
+                "futures",
+                "positions-history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "faae0982-e226-45b9-8928-1da3ad1e43fe",
+              "name": "Closed positions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "futures",
+                    "positions-history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5455f131-436c-48ae-ab16-c36b1c6cadff",
+          "name": "Position Trades",
+          "request": {
+            "name": "Position Trades",
+            "description": {
+              "content": "Returns an array of trade records for the specified position.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "account",
+                "futures",
+                "positions",
+                ":position_id",
+                "trades"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "position_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e6266ed-a2f5-43da-80ad-cf9bcd2f1c6f",
+              "name": "Position trades",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "futures",
+                    "positions",
+                    ":position_id",
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "position_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "302e28f3-6950-4382-a0e6-77ccd29b3d1f",
+          "name": "Position Funding Payments",
+          "request": {
+            "name": "Position Funding Payments",
+            "description": {
+              "content": "Returns funding payment records for the specified position, sorted by timestamp descending.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "account",
+                "futures",
+                "positions",
+                ":position_id",
+                "funding-payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "position_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45e01cde-3749-44e4-a1b2-744b36680cf3",
+              "name": "Position funding payments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "futures",
+                    "positions",
+                    ":position_id",
+                    "funding-payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "position_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4967ffb7-b968-411f-b118-9f49e44bed74",
+          "name": "Funding Payments",
+          "request": {
+            "name": "Funding Payments",
+            "description": {
+              "content": "Returns a paginated list of funding payments, grouped by instrument code and sorted descending by timestamp.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "account",
+                "futures",
+                "funding-payments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "instrument_code",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "96a5deb7-24cb-496e-a909-493a9cc84b36",
+              "name": "Funding payments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "futures",
+                    "funding-payments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "instrument_code",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.onetrading.com/fast",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c32c85c8-e860-4a1e-9816-d3697b785a6f",
+    "name": "One Trading Fast Funding Futures API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the One Trading exchange (\"Fast API\"). Public market-data endpoints (currencies, instruments, order book, candlesticks, market ticker, fees, funding rates, server time) require no authentication. Account, trading and futures endpoints require a Bearer API token with the appropriate permission scope (Read / Trade / Withdraw / SUBACCOUNT_TRANSFER).\nProvenance: this specification was reconstructed by API Evangelist from the provider's public documentation index (https://docs.onetrading.com/llms.txt) and from live responses of the public endpoints. Request/response schemas for public endpoints reflect real observed payloads; authenticated operations are modeled from the documented operation catalog. It is not the provider's official machine-readable contract.",
+      "type": "text/plain"
+    }
+  }
+}

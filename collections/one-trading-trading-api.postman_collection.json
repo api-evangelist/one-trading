@@ -1,0 +1,1712 @@
+{
+  "item": [
+    {
+      "id": "6ca2a76d-81f8-49c1-bece-c16c3dc355b8",
+      "name": "Trading",
+      "description": {
+        "content": "Account order and trade endpoints (Bearer token, TRADE/READ scope)",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c2d23497-0e36-4f65-b70a-c4b55a54da09",
+          "name": "Balances",
+          "request": {
+            "name": "Balances",
+            "description": {
+              "content": "Returns the balance details for an account. Requires READ scope.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "account",
+                "balances"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "982e7b4a-b493-4185-ac1e-420f8a6b2da9",
+              "name": "Account balances",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "balances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b1c122fa-1e77-4e01-b7c7-bd93fa2451dc",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "balances"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"INVALID_INSTRUMENT_CODE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6fd6ac89-9519-4618-af27-bdac932fe622",
+          "name": "Account Fees",
+          "request": {
+            "name": "Account Fees",
+            "description": {
+              "content": "Current fees for account, calculated and combined across all subaccounts. Requires READ scope.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "account",
+                "fees"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "91d4763e-594f-4d93-a6ff-dc0c10090cec",
+              "name": "Account fees",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "fees"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "97fd6535-6571-4264-96d7-dda20abefd17",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "fees"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf43831f-5e9d-42f9-bf94-24d45737a6a0",
+          "name": "Get Orders",
+          "request": {
+            "name": "Get Orders",
+            "description": {
+              "content": "Returns a paginated list of orders. Requires READ scope.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "account",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "instrument_code",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_page_size",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9c5fa93d-3470-4778-bf72-53303d329c66",
+              "name": "Paginated orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "instrument_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "max_page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7b39725d-97c3-4391-b1ba-64a77787b2b0",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "instrument_code",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "max_page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b7f139b9-67c1-4673-8a7c-8ea523c96459",
+          "name": "Create Order",
+          "request": {
+            "name": "Create Order",
+            "description": {
+              "content": "Create a new order. Requires TRADE scope.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "account",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"instrument_code\": \"<string>\",\n  \"type\": \"<string>\",\n  \"side\": \"<string>\",\n  \"amount\": \"<string>\",\n  \"price\": \"<string>\",\n  \"client_id\": \"<uuid>\",\n  \"time_in_force\": \"GOOD_TILL_CANCELLED\",\n  \"reserve_price\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "437e7bdf-dce3-4de8-9a4d-c84d611dc675",
+              "name": "Created order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instrument_code\": \"<string>\",\n  \"type\": \"<string>\",\n  \"side\": \"<string>\",\n  \"amount\": \"<string>\",\n  \"price\": \"<string>\",\n  \"client_id\": \"<uuid>\",\n  \"time_in_force\": \"GOOD_TILL_CANCELLED\",\n  \"reserve_price\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"order_id\": \"898dfad2-4f6c-f612-9bc6-e85b2d2b578a\",\n  \"client_id\": \"925dfa76-4da5-32a2-587a-75f56231fea8\",\n  \"account_id\": \"604ad577-9e60-7603-00b6-f72556da5ae9\",\n  \"instrument_code\": \"string\",\n  \"time\": \"1979-06-13T17:25:17.741Z\",\n  \"side\": \"SELL\",\n  \"price\": \"string\",\n  \"amount\": \"string\",\n  \"type\": \"LIMIT\",\n  \"time_in_force\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d9df4de-f069-434d-8145-a64b3e81b6b9",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instrument_code\": \"<string>\",\n  \"type\": \"<string>\",\n  \"side\": \"<string>\",\n  \"amount\": \"<string>\",\n  \"price\": \"<string>\",\n  \"client_id\": \"<uuid>\",\n  \"time_in_force\": \"GOOD_TILL_CANCELLED\",\n  \"reserve_price\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"INVALID_INSTRUMENT_CODE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d06bda00-1054-4481-9ff6-085378c44a89",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instrument_code\": \"<string>\",\n  \"type\": \"<string>\",\n  \"side\": \"<string>\",\n  \"amount\": \"<string>\",\n  \"price\": \"<string>\",\n  \"client_id\": \"<uuid>\",\n  \"time_in_force\": \"GOOD_TILL_CANCELLED\",\n  \"reserve_price\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"INVALID_INSTRUMENT_CODE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7dbc8bd6-f65c-492c-8645-4fa65a8f5a62",
+          "name": "Cancel All Orders",
+          "request": {
+            "name": "Cancel All Orders",
+            "description": {
+              "content": "Submits a cancel request for all open orders of an account. Requires TRADE scope.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "account",
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "352fa407-24ad-4790-ae1b-c8f6ff858646",
+              "name": "Cancelled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "55352f50-2291-4806-b808-231c8dd04d36",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f719162-df6b-41c7-895f-285824fbf5ff",
+          "name": "Get Order by Order ID",
+          "request": {
+            "name": "Get Order by Order ID",
+            "description": {
+              "content": "Get information about an existing order using the exchange generated order_id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "account",
+                "orders",
+                ":order_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3e2cdf3e-136e-4321-8596-10323781b714",
+              "name": "Order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"order_id\": \"898dfad2-4f6c-f612-9bc6-e85b2d2b578a\",\n  \"client_id\": \"925dfa76-4da5-32a2-587a-75f56231fea8\",\n  \"account_id\": \"604ad577-9e60-7603-00b6-f72556da5ae9\",\n  \"instrument_code\": \"string\",\n  \"time\": \"1979-06-13T17:25:17.741Z\",\n  \"side\": \"SELL\",\n  \"price\": \"string\",\n  \"amount\": \"string\",\n  \"type\": \"LIMIT\",\n  \"time_in_force\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2399d4c-7e5c-43cc-9062-3bbe923b124f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"INVALID_INSTRUMENT_CODE\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "085bc809-fd20-4631-92ee-6eb0d22c5a2b",
+          "name": "Cancel Order by Order ID",
+          "request": {
+            "name": "Cancel Order by Order ID",
+            "description": {
+              "content": "Submits a request to close an open order by providing a valid order_id. Requires TRADE scope.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "account",
+                "orders",
+                ":order_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d4e92343-1e60-46ab-af15-3deb2bb948d3",
+              "name": "Cancelled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fd6ae97b-ee5f-4bd0-9aa7-59c0ae99c22f",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "orders",
+                    ":order_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e12436e4-937a-491b-ae42-771ec3c64270",
+          "name": "Get Order by Client ID",
+          "request": {
+            "name": "Get Order by Client ID",
+            "description": {
+              "content": "Get information about an existing order using the user or exchange generated client_id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "account",
+                "orders",
+                "client",
+                ":client_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "client_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "720da2f3-e263-4938-ad4d-8b77b599fcee",
+              "name": "Order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "orders",
+                    "client",
+                    ":client_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "client_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"order_id\": \"898dfad2-4f6c-f612-9bc6-e85b2d2b578a\",\n  \"client_id\": \"925dfa76-4da5-32a2-587a-75f56231fea8\",\n  \"account_id\": \"604ad577-9e60-7603-00b6-f72556da5ae9\",\n  \"instrument_code\": \"string\",\n  \"time\": \"1979-06-13T17:25:17.741Z\",\n  \"side\": \"SELL\",\n  \"price\": \"string\",\n  \"amount\": \"string\",\n  \"type\": \"LIMIT\",\n  \"time_in_force\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c02a6650-4ab2-4d8b-bcc2-c3199357b3df",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "orders",
+                    "client",
+                    ":client_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "client_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b12dfdcf-917a-4a66-a0bf-fa4f2ef40ed0",
+          "name": "Cancel Order by Client ID",
+          "request": {
+            "name": "Cancel Order by Client ID",
+            "description": {
+              "content": "Submits a request to cancel an open order by providing a valid client_id. Requires TRADE scope.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "account",
+                "orders",
+                "client",
+                ":client_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "client_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af38f130-ff04-49f8-ab3c-4f02f1b05259",
+              "name": "Cancelled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "orders",
+                    "client",
+                    ":client_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "client_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "94143a4f-0711-48e0-9330-2a48620abe83",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "orders",
+                    "client",
+                    ":client_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "client_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c90c8a60-400a-4d41-8f20-cc312748d778",
+          "name": "Get Trades for Order",
+          "request": {
+            "name": "Get Trades for Order",
+            "description": {
+              "content": "Get list of trades for a specific order.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "account",
+                "orders",
+                ":order_id",
+                "trades"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "order_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c12a1df5-5d8f-469c-9f38-7059fb67333c",
+              "name": "Trades for order",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "orders",
+                    ":order_id",
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "order_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9949084f-fa50-492a-85d3-c3641a6a3110",
+          "name": "Get Trades",
+          "request": {
+            "name": "Get Trades",
+            "description": {
+              "content": "Retrieves trades executed within the specified date range, sorted by timestamp descending.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "account",
+                "trades"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_page_size",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "300717c2-579d-4d38-b995-08b85b717525",
+              "name": "Paginated trades",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "trades"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "to",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "max_page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1db09d7-dff9-4e22-b1ca-f391f14e4563",
+          "name": "Get Trade by Trade ID",
+          "request": {
+            "name": "Get Trade by Trade ID",
+            "description": {
+              "content": "Get information about an executed trade using the exchange generated trade_id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "account",
+                "trade",
+                ":trade_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "trade_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e9b36e5-ffff-4931-81ad-8f5741e84d73",
+              "name": "Trade",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "trade",
+                    ":trade_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "trade_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "810092c3-1208-40f7-97b8-854d2f6b96f1",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account",
+                    "trade",
+                    ":trade_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "trade_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.onetrading.com/fast",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "62ef6187-0c46-47b3-b0df-548a5d1573fd",
+    "name": "One Fast Funding Trading API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the One Trading exchange (\"Fast API\"). Public market-data endpoints (currencies, instruments, order book, candlesticks, market ticker, fees, funding rates, server time) require no authentication. Account, trading and futures endpoints require a Bearer API token with the appropriate permission scope (Read / Trade / Withdraw / SUBACCOUNT_TRANSFER).\nProvenance: this specification was reconstructed by API Evangelist from the provider's public documentation index (https://docs.onetrading.com/llms.txt) and from live responses of the public endpoints. Request/response schemas for public endpoints reflect real observed payloads; authenticated operations are modeled from the documented operation catalog. It is not the provider's official machine-readable contract.",
+      "type": "text/plain"
+    }
+  }
+}

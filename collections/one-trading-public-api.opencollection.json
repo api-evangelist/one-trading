@@ -1,0 +1,218 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "One Trading Fast Funding Public API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Public",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Currencies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/currencies"
+          },
+          "docs": "Get a list of all available currencies."
+        },
+        {
+          "info": {
+            "name": "Instruments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/instruments",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by market type."
+              }
+            ]
+          },
+          "docs": "Retrieves a list of available instrument pairs on the exchange, including base/quote assets, precision, min/max trading limits and market state."
+        },
+        {
+          "info": {
+            "name": "Candlesticks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/candlesticks/:instrument_code",
+            "params": [
+              {
+                "name": "instrument_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "unit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "period",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "countBack",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get instrument candlesticks for a specified time period (up to 5000 candlesticks). Supports a countBack parameter that takes precedence over 'from' when provided."
+        },
+        {
+          "info": {
+            "name": "Order Book",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/order-book/:instrument_code",
+            "params": [
+              {
+                "name": "instrument_code",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "depth",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get the specified instrument's order book."
+        },
+        {
+          "info": {
+            "name": "Market Ticker",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/market-ticker"
+          },
+          "docs": "The market ticker provides information about the current state of a market and summary statistics over 24 hours, updated every minute."
+        },
+        {
+          "info": {
+            "name": "Market Ticker For Instrument",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/market-ticker/:instrument_code",
+            "params": [
+              {
+                "name": "instrument_code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get market statistics on a single market."
+        },
+        {
+          "info": {
+            "name": "Fee Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/fees"
+          },
+          "docs": "Returns details of all fee groups. Fee groups are separated into product types."
+        },
+        {
+          "info": {
+            "name": "Time",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/time"
+          },
+          "docs": "Returns the current server time in UTC."
+        },
+        {
+          "info": {
+            "name": "Current Funding Rate",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/funding-rate",
+            "params": [
+              {
+                "name": "instrument_code",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve the latest preliminary funding rate for one or all futures instruments. Recalculated every minute and settled every 4 hours."
+        },
+        {
+          "info": {
+            "name": "Funding Rate History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/funding-rate/history",
+            "params": [
+              {
+                "name": "instrument_code",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve the historical settled funding rates for a specific instrument, updated every 4 hours."
+        },
+        {
+          "info": {
+            "name": "Funding Rate Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.onetrading.com/fast/v1/funding-rate/settings"
+          },
+          "docs": "Returns an array of funding rate settings per instrument."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
