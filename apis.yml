@@ -42,6 +42,17 @@ tags:
 - Trading
 - Derivatives
 - Futures
+- Financial-Services
+- Market Data
+- WebSocket
+- Fintech
+tags_raw:
+- Company
+- Cryptocurrency
+- Crypto Exchange
+- Trading
+- Derivatives
+- Futures
 - Financial Services
 - Market Data
 - WebSocket
@@ -54,6 +65,10 @@ apis:
   humanURL: https://docs.onetrading.com/websocket.md
   baseURL: wss://streams.fast.onetrading.com
   tags:
+  - WebSocket
+  - Streaming
+  - Event
+  tags_raw:
   - WebSocket
   - Streaming
   - Events
