@@ -1,10 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: One Fast Funding Trading API
+  title: One Fast Trading API
   version: '1.0'
-  description: 'REST API for the One Trading exchange ("Fast API"). Public market-data endpoints (currencies, instruments, order book, candlesticks, market ticker, fees, funding rates, server time) require no authentication. Account, trading and futures endpoints require a Bearer API token with the appropriate permission scope (Read / Trade / Withdraw / SUBACCOUNT_TRANSFER).
-
-    Provenance: this specification was reconstructed by API Evangelist from the provider''s public documentation index (https://docs.onetrading.com/llms.txt) and from live responses of the public endpoints. Request/response schemas for public endpoints reflect real observed payloads; authenticated operations are modeled from the documented operation catalog. It is not the provider''s official machine-readable contract.'
+  description: REST API for the One Trading exchange ("Fast API").
   x-provenance:
     generated: '2026-07-20'
     method: generated
@@ -335,6 +333,13 @@ components:
         reserve_price:
           type: string
           description: Maximum price for MOVE orders
+    Error:
+      type: object
+      description: One Trading error envelope. Errors carry a single machine-readable code string.
+      properties:
+        error:
+          type: string
+          example: INVALID_INSTRUMENT_CODE
     Order:
       type: object
       properties:
@@ -369,13 +374,6 @@ components:
           type: string
         status:
           type: string
-    Error:
-      type: object
-      description: One Trading error envelope. Errors carry a single machine-readable code string.
-      properties:
-        error:
-          type: string
-          example: INVALID_INSTRUMENT_CODE
   securitySchemes:
     BearerToken:
       type: http

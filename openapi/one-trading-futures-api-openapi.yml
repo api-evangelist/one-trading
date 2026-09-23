@@ -1,10 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: One Trading Fast Funding Futures API
+  title: One Trading Fast Futures API
   version: '1.0'
-  description: 'REST API for the One Trading exchange ("Fast API"). Public market-data endpoints (currencies, instruments, order book, candlesticks, market ticker, fees, funding rates, server time) require no authentication. Account, trading and futures endpoints require a Bearer API token with the appropriate permission scope (Read / Trade / Withdraw / SUBACCOUNT_TRANSFER).
-
-    Provenance: this specification was reconstructed by API Evangelist from the provider''s public documentation index (https://docs.onetrading.com/llms.txt) and from live responses of the public endpoints. Request/response schemas for public endpoints reflect real observed payloads; authenticated operations are modeled from the documented operation catalog. It is not the provider''s official machine-readable contract.'
+  description: REST API for the One Trading exchange ("Fast API").
   x-provenance:
     generated: '2026-07-20'
     method: generated
@@ -180,13 +178,6 @@ paths:
           description: Funding payments
 components:
   schemas:
-    FundingRateHistory:
-      type: object
-      properties:
-        funding_rates:
-          type: array
-          items:
-            $ref: '#/components/schemas/FundingRate'
     FundingRateSetting:
       type: object
       properties:
@@ -201,6 +192,13 @@ components:
           type: number
         annual_interest_rate:
           type: number
+    FundingRateHistory:
+      type: object
+      properties:
+        funding_rates:
+          type: array
+          items:
+            $ref: '#/components/schemas/FundingRate'
     FundingRate:
       type: object
       properties:
