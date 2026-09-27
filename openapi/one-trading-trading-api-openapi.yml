@@ -291,6 +291,13 @@ paths:
           description: Not Found
 components:
   schemas:
+    Error:
+      type: object
+      description: One Trading error envelope. Errors carry a single machine-readable code string.
+      properties:
+        error:
+          type: string
+          example: INVALID_INSTRUMENT_CODE
     CreateOrderRequest:
       type: object
       required:
@@ -333,13 +340,6 @@ components:
         reserve_price:
           type: string
           description: Maximum price for MOVE orders
-    Error:
-      type: object
-      description: One Trading error envelope. Errors carry a single machine-readable code string.
-      properties:
-        error:
-          type: string
-          example: INVALID_INSTRUMENT_CODE
     Order:
       type: object
       properties:

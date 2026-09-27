@@ -51,10 +51,11 @@ tags:
 - Trading
 - Derivatives
 - Futures
-- Financial-Services
+- Financial Services
 - Market Data
 - WebSocket
 - Fintech
+- Real-Time
 tags_raw:
 - Company
 - Cryptocurrency
@@ -66,6 +67,8 @@ tags_raw:
 - Market Data
 - WebSocket
 - Fintech
+- Financial-Services
+- Real-Time
 apis:
 - name: One Trading WebSocket Streams API
   description: Real-time WebSocket API for market data (order book, price ticks, book ticker) and, after

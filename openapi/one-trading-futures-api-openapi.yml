@@ -192,13 +192,6 @@ components:
           type: number
         annual_interest_rate:
           type: number
-    FundingRateHistory:
-      type: object
-      properties:
-        funding_rates:
-          type: array
-          items:
-            $ref: '#/components/schemas/FundingRate'
     FundingRate:
       type: object
       properties:
@@ -213,6 +206,13 @@ components:
         timestamp:
           type: string
           format: date-time
+    FundingRateHistory:
+      type: object
+      properties:
+        funding_rates:
+          type: array
+          items:
+            $ref: '#/components/schemas/FundingRate'
   securitySchemes:
     BearerToken:
       type: http
