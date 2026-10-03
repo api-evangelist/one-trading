@@ -298,6 +298,40 @@ components:
         error:
           type: string
           example: INVALID_INSTRUMENT_CODE
+    Order:
+      type: object
+      properties:
+        order_id:
+          type: string
+          format: uuid
+        client_id:
+          type: string
+          format: uuid
+        account_id:
+          type: string
+          format: uuid
+        instrument_code:
+          type: string
+        time:
+          type: string
+          format: date-time
+        side:
+          type: string
+          enum:
+          - BUY
+          - SELL
+        price:
+          type: string
+        amount:
+          type: string
+        type:
+          type: string
+          enum:
+          - LIMIT
+        time_in_force:
+          type: string
+        status:
+          type: string
     CreateOrderRequest:
       type: object
       required:
@@ -340,40 +374,6 @@ components:
         reserve_price:
           type: string
           description: Maximum price for MOVE orders
-    Order:
-      type: object
-      properties:
-        order_id:
-          type: string
-          format: uuid
-        client_id:
-          type: string
-          format: uuid
-        account_id:
-          type: string
-          format: uuid
-        instrument_code:
-          type: string
-        time:
-          type: string
-          format: date-time
-        side:
-          type: string
-          enum:
-          - BUY
-          - SELL
-        price:
-          type: string
-        amount:
-          type: string
-        type:
-          type: string
-          enum:
-          - LIMIT
-        time_in_force:
-          type: string
-        status:
-          type: string
   securitySchemes:
     BearerToken:
       type: http

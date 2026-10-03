@@ -178,20 +178,13 @@ paths:
           description: Funding payments
 components:
   schemas:
-    FundingRateSetting:
+    FundingRateHistory:
       type: object
       properties:
-        instrument_code:
-          type: string
-        state:
-          type: string
-          example: ACTIVE
-        market_offset:
-          type: number
-        clamp_threshold:
-          type: number
-        annual_interest_rate:
-          type: number
+        funding_rates:
+          type: array
+          items:
+            $ref: '#/components/schemas/FundingRate'
     FundingRate:
       type: object
       properties:
@@ -206,13 +199,20 @@ components:
         timestamp:
           type: string
           format: date-time
-    FundingRateHistory:
+    FundingRateSetting:
       type: object
       properties:
-        funding_rates:
-          type: array
-          items:
-            $ref: '#/components/schemas/FundingRate'
+        instrument_code:
+          type: string
+        state:
+          type: string
+          example: ACTIVE
+        market_offset:
+          type: number
+        clamp_threshold:
+          type: number
+        annual_interest_rate:
+          type: number
   securitySchemes:
     BearerToken:
       type: http
