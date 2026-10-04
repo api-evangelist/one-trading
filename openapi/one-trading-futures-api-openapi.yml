@@ -185,20 +185,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FundingRate'
-    FundingRate:
-      type: object
-      properties:
-        instrument_code:
-          type: string
-        funding_rate:
-          type: string
-        mark_price:
-          type: string
-        time:
-          type: integer
-        timestamp:
-          type: string
-          format: date-time
     FundingRateSetting:
       type: object
       properties:
@@ -213,6 +199,20 @@ components:
           type: number
         annual_interest_rate:
           type: number
+    FundingRate:
+      type: object
+      properties:
+        instrument_code:
+          type: string
+        funding_rate:
+          type: string
+        mark_price:
+          type: string
+        time:
+          type: integer
+        timestamp:
+          type: string
+          format: date-time
   securitySchemes:
     BearerToken:
       type: http

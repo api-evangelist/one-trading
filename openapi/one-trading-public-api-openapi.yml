@@ -290,15 +290,21 @@ paths:
                   $ref: '#/components/schemas/FundingRateSetting'
 components:
   schemas:
-    OrderBookLevel:
+    FundingRateHistory:
       type: object
       properties:
-        price:
+        funding_rates:
+          type: array
+          items:
+            $ref: '#/components/schemas/FundingRate'
+    ServerTime:
+      type: object
+      properties:
+        iso:
           type: string
-          example: '65483.23'
-        amount:
-          type: string
-          example: '0.32988'
+          format: date-time
+        epoch_millis:
+          type: integer
     FundingRateSetting:
       type: object
       properties:
@@ -313,44 +319,44 @@ components:
           type: number
         annual_interest_rate:
           type: number
-    Instrument:
+    FundingRate:
       type: object
       properties:
-        base:
-          $ref: '#/components/schemas/AssetRef'
-        quote:
-          $ref: '#/components/schemas/AssetRef'
-        amount_precision:
+        instrument_code:
+          type: string
+        funding_rate:
+          type: string
+        mark_price:
+          type: string
+        time:
           type: integer
-          example: 5
-        market_precision:
-          type: integer
-          example: 2
-        min_size:
+        timestamp:
           type: string
-          example: '10.0'
-        min_price:
-          type: string
-          example: '1000'
-        max_price:
-          type: string
-        state:
-          type: string
-          example: ACTIVE
-    Error:
-      type: object
-      description: One Trading error envelope. Errors carry a single machine-readable code string.
-      properties:
-        error:
-          type: string
-          example: INVALID_INSTRUMENT_CODE
-    FundingRateHistory:
+          format: date-time
+    FeeGroup:
       type: object
       properties:
-        funding_rates:
+        fee_group_id:
+          type: string
+          example: SPOT
+        display_text:
+          type: string
+        volume_currency:
+          type: string
+          example: EUR
+        fee_tiers:
           type: array
           items:
-            $ref: '#/components/schemas/FundingRate'
+            type: object
+            properties:
+              volume:
+                type: number
+              fee_group_id:
+                type: string
+              maker_fee:
+                type: string
+              taker_fee:
+                type: string
     OrderBook:
       type: object
       properties:
@@ -368,15 +374,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/OrderBookLevel'
-    AssetRef:
+    OrderBookLevel:
       type: object
       properties:
-        code:
+        price:
           type: string
-          example: BTC
-        precision:
-          type: integer
-          example: 8
+          example: '65483.23'
+        amount:
+          type: string
+          example: '0.32988'
     CandlestickResponse:
       type: object
       properties:
@@ -412,71 +418,6 @@ components:
               time:
                 type: string
                 format: date-time
-    ServerTime:
-      type: object
-      properties:
-        iso:
-          type: string
-          format: date-time
-        epoch_millis:
-          type: integer
-    FeeGroup:
-      type: object
-      properties:
-        fee_group_id:
-          type: string
-          example: SPOT
-        display_text:
-          type: string
-        volume_currency:
-          type: string
-          example: EUR
-        fee_tiers:
-          type: array
-          items:
-            type: object
-            properties:
-              volume:
-                type: number
-              fee_group_id:
-                type: string
-              maker_fee:
-                type: string
-              taker_fee:
-                type: string
-    MarketTicker:
-      type: object
-      properties:
-        instrument_code:
-          type: string
-        last_price:
-          type: string
-        high:
-          type: string
-        low:
-          type: string
-        highest_bid:
-          type: string
-        lowest_ask:
-          type: string
-        base_volume:
-          type: string
-        price_change:
-          type: string
-    FundingRate:
-      type: object
-      properties:
-        instrument_code:
-          type: string
-        funding_rate:
-          type: string
-        mark_price:
-          type: string
-        time:
-          type: integer
-        timestamp:
-          type: string
-          format: date-time
     Currency:
       type: object
       properties:
@@ -501,6 +442,65 @@ components:
       - code
       - precision
       - name
+    AssetRef:
+      type: object
+      properties:
+        code:
+          type: string
+          example: BTC
+        precision:
+          type: integer
+          example: 8
+    MarketTicker:
+      type: object
+      properties:
+        instrument_code:
+          type: string
+        last_price:
+          type: string
+        high:
+          type: string
+        low:
+          type: string
+        highest_bid:
+          type: string
+        lowest_ask:
+          type: string
+        base_volume:
+          type: string
+        price_change:
+          type: string
+    Error:
+      type: object
+      description: One Trading error envelope. Errors carry a single machine-readable code string.
+      properties:
+        error:
+          type: string
+          example: INVALID_INSTRUMENT_CODE
+    Instrument:
+      type: object
+      properties:
+        base:
+          $ref: '#/components/schemas/AssetRef'
+        quote:
+          $ref: '#/components/schemas/AssetRef'
+        amount_precision:
+          type: integer
+          example: 5
+        market_precision:
+          type: integer
+          example: 2
+        min_size:
+          type: string
+          example: '10.0'
+        min_price:
+          type: string
+          example: '1000'
+        max_price:
+          type: string
+        state:
+          type: string
+          example: ACTIVE
   securitySchemes:
     BearerToken:
       type: http
