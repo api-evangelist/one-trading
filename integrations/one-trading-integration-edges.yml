@@ -24,7 +24,7 @@ edges:
   evidence: https://api.coingecko.com/api/v3/exchanges/bitpanda
   matched_by: domain:onetrading.com
   coingecko_id: bitpanda
-  trust_score: 7
+  trust_score: 6
   detected_by: sweep-crypto.py
   first_seen: '2026-10-13'
 - partner_name: MiCA (EU)
