@@ -49,3 +49,42 @@
     detected: '2026-10-14'
   status: not-a-workflow
   arazzo: null
+- slug: one-trading-iso-10383-mic
+  label: ISO 10383 (MIC)
+  partner_name: ISO 10383 (MIC)
+  category: registered trading venues and market segments
+  type: register
+  channel: standard-directory
+  evidence: https://www.iso20022.org/sites/default/files/ISO10383_MIC/ISO10383_MIC.csv
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: ISO 10383 Market Identifier Codes (ISO 20022 registration authority)
+    spec_file: null
+    standard: ISO 10383
+    role: venue operator
+    matched_domain: onetrading.com
+    matched_by: domain:onetrading.com
+    categories:
+    - OTFS
+    operating_mics:
+    - ONEX
+    mics:
+    - mic: ONEX
+      operating_mic: ONEX
+      segment: OPRT
+      market: ONE TRADING EXCHANGE
+      category: OTFS
+      legal_name: ONE TRADING EXCHANGE B.V.
+      country: NL
+    - mic: ONEP
+      operating_mic: ONEX
+      segment: SGMT
+      market: ONE TRADING EXCHANGE - PERPETUALS
+      category: OTFS
+      legal_name: ONE TRADING EXCHANGE B.V.
+      country: NL
+    detected_by: sweep-capital-markets.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
