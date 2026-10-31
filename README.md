@@ -64,6 +64,130 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-One Trading is a company surfaced as a portfolio company of speedinvest and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+One Trading (One Trading Exchange B.V.) is an EU-regulated cryptocurrency and derivatives exchange for retail and institutional traders, positioning itself as "the world's fastest exchange." It offers spot crypto plus crypto futures (up to 10x leverage), index futures and 24/7 equity futures. Its public "Fast API" provides REST market-data and trading endpoints (currencies, instruments, order book, candlesticks, ticker, fees, funding rates, orders, trades, futures positions and subaccount transfers) at https://api.onetrading.com/fast, plus a real-time WebSocket streams API at wss://streams.fast.onetrading.com. Formerly operated as Bitpanda Pro. This profile was surfaced as a Speedinvest portfolio company and enriched by the API Evangelist pipeline from the provider's public documentation and live endpoints.
 
-Backed by: speedinvest
+**Areas:** Company · Cryptocurrency · Cryptocurrency Exchange · Trading · Derivatives · Futures · Financial Services · Market Data · WebSocket · Fintech · Real-Time
+
+## One Trading on APIs.io
+
+Everything profiled for One Trading is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/one-trading/](https://apis.io/providers/one-trading/)** — or go straight to one of the APIs or properties below.
+
+### APIs (5)
+
+- [One Trading WebSocket Streams API](https://apis.io/apis/one-trading/one-trading-websocket-streams-api/) — Real-time WebSocket API for market data (order book, price ticks, book ticker) and, after authenticating, private trading events (order lifecycle, trades,…
+- [One Trading Funding API](https://apis.io/apis/one-trading/one-trading-funding-api/) — Subaccount balance transfers
+- [One Trading Futures API](https://apis.io/apis/one-trading/one-trading-futures-api/) — Futures positions, funding and portfolio endpoints
+- [One Trading Public API](https://apis.io/apis/one-trading/one-trading-public-api/) — Public market-data endpoints (no authentication)
+- [One Trading API](https://apis.io/apis/one-trading/one-trading-trading-api/) — Account order and trade endpoints (Bearer token, TRADE/READ scope)
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [One Trading WebSocket Streams API](https://apis.io/asyncapis/one-trading/one-trading-streams-asyncapi/)
+
+#### Event channels (1)
+
+Individual events and webhooks the provider emits.
+
+- [/](https://apis.io/channels/one-trading/untitled/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [one-trading](https://apis.io/servers/one-trading/one-trading/)
+
+#### Collections (4)
+
+Postman and Open Collection request collections.
+
+- [One Trading Fast Funding API](https://apis.io/collections/one-trading/open-one-trading-funding-api/)
+- [One Trading Fast Funding Futures API](https://apis.io/collections/one-trading/open-one-trading-futures-api/)
+- [One Trading Fast Funding Public API](https://apis.io/collections/one-trading/open-one-trading-public-api/)
+- [One Fast Funding Trading API](https://apis.io/collections/one-trading/open-one-trading-trading-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [One Trading Fast Overlay](https://apis.io/overlays/one-trading/one-trading-fast-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [One Trading Authentication](https://apis.io/security/one-trading/one-trading-authentication/)
+- [One Trading Domain Security](https://apis.io/security/one-trading/one-trading-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://onetrading.com)
+- [Documentation](https://docs.onetrading.com)
+- [Getting started](https://support.onetrading.com/hc/en-gb/articles/16357722538129-What-should-I-know-about-One-Trading-API)
+- [API reference](https://docs.onetrading.com/rest/public/currencies)
+- [Pricing](https://onetrading.com/fees)
+- [Support](https://support.onetrading.com/hc/en-gb)
+- [Blog](https://onetrading.com/blog)
+- [Terms of service](https://onetrading.com/terms)
+- [Privacy policy](https://onetrading.com/privacy-policy)
+- [GitHub](https://github.com/one-trading)
+
+## API Evangelist rating
+
+**Kin Score 32.4** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 23.9 |
+| Contract governance | 4.5 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 49.4 |
+| Access clarity | 38.2 |
+
+**Agent readiness 28.2** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 23.1** — Securities & Market Data
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/one-trading/](https://apis.io/providers/one-trading/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for One Trading: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/one-trading/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
